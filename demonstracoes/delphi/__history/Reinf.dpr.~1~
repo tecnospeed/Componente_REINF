@@ -1,0 +1,14 @@
+program Reinf;
+
+uses
+  Vcl.Forms,
+  UReinf in 'UReinf.pas' {frmESocial};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmESocial, frmESocial);
+  Application.Run;
+end.

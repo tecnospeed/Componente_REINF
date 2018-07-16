@@ -1,0 +1,12 @@
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\bin\Debug\REINF-CSharp.exe.config
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\bin\Debug\REINF-CSharp.exe
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\bin\Debug\REINF-CSharp.pdb
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\Reinf.csprojResolveAssemblyReference.cache
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\Interop.ReinfClientX.dll
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\Reinf.csproj.ResolveComReference.cache
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF_CSharp.frmReinf.resources
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF_CSharp.Properties.Resources.resources
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\Reinf.csproj.GenerateResource.cache
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\Reinf.csproj.CoreCompileInputs.cache
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF-CSharp.exe
+C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF-CSharp.pdb
