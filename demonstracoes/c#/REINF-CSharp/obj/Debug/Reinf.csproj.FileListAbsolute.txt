@@ -10,3 +10,14 @@ C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\Reinf.csproj.Generat
 C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\Reinf.csproj.CoreCompileInputs.cache
 C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF-CSharp.exe
 C:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF-CSharp.pdb
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\bin\Debug\REINF-CSharp.exe.config
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\Interop.ReinfClientX.dll
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\Reinf.csproj.ResolveComReference.cache
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\REINF-CSharp.exe
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\REINF-CSharp.pdb
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\Reinf.csprojResolveAssemblyReference.cache
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\REINF_CSharp.frmReinf.resources
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\REINF_CSharp.Properties.Resources.resources
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\obj\Debug\Reinf.csproj.GenerateResource.Cache
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\bin\Debug\REINF-CSharp.exe
+C:\Git\Reinf\demonstracoes\c#\REINF-CSharp\bin\Debug\REINF-CSharp.pdb

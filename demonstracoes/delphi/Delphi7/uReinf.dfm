@@ -1,8 +1,8 @@
 object frmReinf: TfrmReinf
   Left = 192
   Top = 107
-  Width = 555
-  Height = 634
+  Width = 1116
+  Height = 419
   Caption = 'frmReinf'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -118,43 +118,43 @@ object frmReinf: TfrmReinf
   object btnTx2: TButton
     Left = 9
     Top = 235
-    Width = 92
+    Width = 118
     Height = 25
     Caption = 'Gerar Tx2'
     TabOrder = 8
     OnClick = btnTx2Click
   end
   object btnXml: TButton
-    Left = 120
+    Left = 141
     Top = 235
-    Width = 92
+    Width = 121
     Height = 25
     Caption = 'Gerar Xml'
     TabOrder = 9
     OnClick = btnXmlClick
   end
   object btnAssinar: TButton
-    Left = 231
+    Left = 276
     Top = 235
-    Width = 90
+    Width = 124
     Height = 25
     Caption = 'Assinar'
     TabOrder = 10
     OnClick = btnAssinarClick
   end
   object btnEnviar: TButton
-    Left = 340
+    Left = 410
     Top = 235
-    Width = 90
+    Width = 127
     Height = 25
     Caption = 'Enviar'
     TabOrder = 11
     OnClick = btnEnviarClick
   end
   object btnConsultar: TButton
-    Left = 447
-    Top = 235
-    Width = 90
+    Left = 7
+    Top = 315
+    Width = 530
     Height = 25
     Caption = 'Consultar'
     TabOrder = 12
@@ -162,7 +162,7 @@ object frmReinf: TfrmReinf
   end
   object edtIdLote: TLabeledEdit
     Left = 8
-    Top = 280
+    Top = 360
     Width = 529
     Height = 21
     EditLabel.Width = 94
@@ -170,20 +170,68 @@ object frmReinf: TfrmReinf
     EditLabel.Caption = 'Identifiador do Lote:'
     TabOrder = 13
   end
-  object mmoXml: TMemo
-    Left = 8
-    Top = 307
-    Width = 529
-    Height = 289
-    ScrollBars = ssVertical
-    TabOrder = 14
-  end
   object cbVersao: TComboBox
     Left = 367
     Top = 56
     Width = 170
     Height = 21
     ItemHeight = 13
+    TabOrder = 14
+  end
+  object PageControl1: TPageControl
+    Left = 544
+    Top = 0
+    Width = 561
+    Height = 385
+    ActivePage = tsRetorno
     TabOrder = 15
+    object tsRetorno: TTabSheet
+      Caption = 'Retorno'
+      object mmoXml: TMemo
+        Left = 0
+        Top = 4
+        Width = 553
+        Height = 349
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Xml de Envio'
+      ImageIndex = 1
+      object mmoXmlEnvio: TMemo
+        Left = 0
+        Top = 4
+        Width = 553
+        Height = 349
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Xml de Retorno'
+      ImageIndex = 2
+      object mmoXmlRetorno: TMemo
+        Left = 0
+        Top = 4
+        Width = 553
+        Height = 349
+        ScrollBars = ssVertical
+        TabOrder = 0
+      end
+    end
+  end
+  object rgTipoConsulta: TRadioGroup
+    Left = 8
+    Top = 264
+    Width = 529
+    Height = 41
+    Caption = 'Tipo de Consulta:'
+    Columns = 3
+    Items.Strings = (
+      'Id do Lote'
+      'Id de Evento'
+      'Nr. Recibo')
+    TabOrder = 16
   end
 end

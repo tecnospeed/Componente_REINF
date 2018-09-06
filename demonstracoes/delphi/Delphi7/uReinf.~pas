@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ReinfClientX_TLB;
+  Dialogs, StdCtrls, ExtCtrls, ReinfClientX_TLB, ComCtrls;
 
 type
   TfrmReinf = class(TForm)
@@ -25,8 +25,15 @@ type
     btnEnviar: TButton;
     btnConsultar: TButton;
     edtIdLote: TLabeledEdit;
-    mmoXml: TMemo;
     cbVersao: TComboBox;
+    PageControl1: TPageControl;
+    tsRetorno: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
+    mmoXml: TMemo;
+    mmoXmlEnvio: TMemo;
+    mmoXmlRetorno: TMemo;
+    rgTipoConsulta: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure btnConfigurarClick(Sender: TObject);
     procedure btnTx2Click(Sender: TObject);
@@ -60,6 +67,7 @@ begin
   edtCnpjSH.Text := '86837822000147';
   edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
   edtEmpregador.Text := '08187168';
+  rgTipoConsulta.ItemIndex := 0;
 end;
 
 procedure TfrmReinf.btnConfigurarClick(Sender: TObject);
@@ -151,7 +159,13 @@ var
   _RetItemInfoCRTomR5011: IspdInfoCRTomR5011;
   _i, _j, _b: integer;
 begin
-  _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text);
+  if rgTipoConsulta.ItemIndex = 0 then
+  _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text)
+  else if rgTipoConsulta.ItemIndex = 1 then
+  _RetConsulta := Reinf.ConsultarIdEvento(edtIdLote.Text)
+  else if rgTipoConsulta.ItemIndex = 2 then
+  _RetConsulta := Reinf.ConsultarEventoPorRecibo(edtIdLote.Text);
+
 
   mmoXML.Lines.Clear;
   mmoXML.Lines.Add('### CONSULTA PROTOCOLO ###');
@@ -317,8 +331,6 @@ begin
       mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrencia.Codigo);
       mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrencia.Descricao);
     end;
-//    mmoXML.Lines.Add('        Xml Retorno: ' + _RetConsulta.XmlRetorno);
-    mmoXML.Lines.Add('        Xml Envio: ' + _RetConsulta.XmlEnviado);
 
   end;
   for _i := 0 to _RetConsulta.CountOcorrencias - 1 do
@@ -328,6 +340,8 @@ begin
     mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrenciaEnvio.Codigo);
     mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrenciaEnvio.Descricao);
   end;
+  mmoXmlEnvio.lines.Add(_RetConsulta.XmlEnviado);
+  mmoXmlRetorno.lines.Add(_RetConsulta.XmlRetorno);
 end;
 
 end.

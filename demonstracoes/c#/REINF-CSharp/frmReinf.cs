@@ -22,31 +22,35 @@ namespace REINF_CSharp
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Text = "Reinf - TecnoSpeed - " + reinf.Versao;
-            string[] vetor;
+            string[] vetor, vetor2;
             tbEmpregador.Text = "08187168";
             tbTemplates.Text = @"C:\Program Files\TecnoSpeed\Reinf\Arquivos\Templates\";
             tbEsquemas.Text = @"C:\Program Files\TecnoSpeed\Reinf\Arquivos\Esquemas\";
             tbCNPJSH.Text = "86837822000147";
             tbTokenSH.Text = "Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI";
             vetor = reinf.ListarCertificados("|").Split('|');
+            vetor2 = reinf.ListarVersaoManual("|").Split('|');
             cbbCertificado.Items.Clear();
             for (int i = 0; i < vetor.Length; i++)
             {
                 cbbCertificado.Items.Add(vetor[i]);
             }
-            cbbCertificado.SelectedIndex = 3;
+            cbVersao.Items.Clear();
+            for (int i = 0; i < vetor2.Length; i++)
+            {
+                cbVersao.Items.Add(vetor2[i]);
+            }
+            cbbCertificado.SelectedIndex = 0;
             cbVersao.SelectedIndex = 0;
             cbAmbiente.SelectedIndex = 1;
+            rbIdLote.Checked = true;
         }
 
         private void btnConfigurarSH_Click(object sender, EventArgs e)
         {
             reinf.ConfigurarSoftwareHouse(tbCNPJSH.Text, tbTokenSH.Text);
             reinf.CpfCnpjEmpregador = tbEmpregador.Text;
-            if (cbVersao.Text == "vm13")
-            {
-                reinf.VersaoManual = ReinfClientX.VersaoManualKind.vm13;
-            }
+            reinf.VersaoManual = cbVersao.Text;
             reinf.DiretorioTemplates = tbTemplates.Text;
             reinf.DiretorioEsquemas = tbEsquemas.Text;
             reinf.NomeCertificado = cbbCertificado.Text;
@@ -139,7 +143,18 @@ namespace REINF_CSharp
             ReinfClientX.IspdRPrestR5011 RetItemRPrestR5011;
             ReinfClientX.IspdRRecRepADR5011 RetItemRRecRepADR5011;
             ReinfClientX.IspdInfoCRTomR5011 RetItemInfoCRTomR5011;
-            retConsulta = reinf.ConsultarLoteEventos(tbIDLote.Text);
+            retConsulta = null;
+            if (rbIdLote.Checked)
+            {
+                retConsulta = reinf.ConsultarLoteEventos(tbIDLote.Text);
+            }else if (rbIdEvento.Checked)
+            {
+                retConsulta = reinf.ConsultarIdEvento(tbIDLote.Text);
+            }else if (rbNrRecibo.Checked)
+            {
+                retConsulta = reinf.ConsultarEventoPorRecibo(tbIDLote.Text);
+            }
+            
 
             tbRetorno.Clear();
             tbRetorno.Text += "Número do Protocolo: " + retConsulta.NumeroProtocolo + "\r\n";
@@ -316,6 +331,8 @@ namespace REINF_CSharp
                 tbRetorno.Text += "          Código: " + retConsultaOcorrenciaEnvio.Codigo + "\r\n";
                 tbRetorno.Text += "          Descrição: " + retConsultaOcorrenciaEnvio.Descricao + "\r\n";
             }
+            tbXmlEnvio.Text = retConsulta.XmlEnviado;
+            tbXmlRetorno.Text = retConsulta.XmlRetorno;
 
         }
     }
