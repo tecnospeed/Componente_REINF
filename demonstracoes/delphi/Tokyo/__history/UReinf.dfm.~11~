@@ -1,7 +1,7 @@
 object frmReinf: TfrmReinf
   Left = 617
   Top = 154
-  ClientHeight = 395
+  ClientHeight = 604
   ClientWidth = 1113
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -151,7 +151,7 @@ object frmReinf: TfrmReinf
   end
   object btnConsultar: TButton
     Left = 8
-    Top = 323
+    Top = 307
     Width = 530
     Height = 25
     Caption = 'Consultar'
@@ -160,7 +160,7 @@ object frmReinf: TfrmReinf
   end
   object edtIdLote: TLabeledEdit
     Left = 9
-    Top = 368
+    Top = 352
     Width = 529
     Height = 21
     EditLabel.Width = 99
@@ -179,8 +179,8 @@ object frmReinf: TfrmReinf
     Left = 544
     Top = 8
     Width = 561
-    Height = 381
-    ActivePage = tsRetorno
+    Height = 369
+    ActivePage = tsXmlRetorno
     TabOrder = 15
     object tsRetorno: TTabSheet
       Caption = 'Retorno'
@@ -188,7 +188,7 @@ object frmReinf: TfrmReinf
         Left = 3
         Top = 3
         Width = 547
-        Height = 347
+        Height = 335
         ScrollBars = ssVertical
         TabOrder = 0
       end
@@ -200,7 +200,7 @@ object frmReinf: TfrmReinf
         Left = 3
         Top = 3
         Width = 547
-        Height = 347
+        Height = 335
         ScrollBars = ssVertical
         TabOrder = 0
       end
@@ -212,23 +212,10 @@ object frmReinf: TfrmReinf
         Left = 3
         Top = 3
         Width = 547
-        Height = 347
+        Height = 335
         ScrollBars = ssVertical
         TabOrder = 0
       end
     end
-  end
-  object rg: TRadioGroup
-    Left = 8
-    Top = 266
-    Width = 530
-    Height = 51
-    Caption = 'Tipo de Consulta:'
-    Columns = 3
-    Items.Strings = (
-      'Id de Lote'
-      'Id de Evento'
-      'Nr de Recibo')
-    TabOrder = 16
   end
 end

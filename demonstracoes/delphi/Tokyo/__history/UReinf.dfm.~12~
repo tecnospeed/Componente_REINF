@@ -184,6 +184,7 @@ object frmReinf: TfrmReinf
     TabOrder = 15
     object tsRetorno: TTabSheet
       Caption = 'Retorno'
+      ExplicitHeight = 341
       object mmoXml: TMemo
         Left = 3
         Top = 3
@@ -196,6 +197,7 @@ object frmReinf: TfrmReinf
     object tsXmlEnviad: TTabSheet
       Caption = 'Xml Enviado'
       ImageIndex = 1
+      ExplicitHeight = 341
       object mmoXmlEnviado: TMemo
         Left = 3
         Top = 3
@@ -208,6 +210,7 @@ object frmReinf: TfrmReinf
     object tsXmlRetorno: TTabSheet
       Caption = 'Xml Retorno'
       ImageIndex = 2
+      ExplicitHeight = 341
       object mmoXmlRetorno: TMemo
         Left = 3
         Top = 3

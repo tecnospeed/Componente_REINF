@@ -125,6 +125,7 @@ begin
     mmoXML.Lines.Add('    Código de Status: ' + _RetConsultaItem.cStat);
     mmoXML.Lines.Add('    Mensagem: ' + _RetConsultaItem.Mensagem);
     mmoXML.Lines.Add('    Status do Evento: ' + _RetConsultaItem.Status);
+    mmoXML.Lines.Add('    Status do Evento: ' + _RetConsultaItem.IdEvento);
 
 
     if not _RetConsultaItem.R5001.IsEmpty then

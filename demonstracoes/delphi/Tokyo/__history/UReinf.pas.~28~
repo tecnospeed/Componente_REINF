@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ReinfClientX_TLB, Vcl.StdCtrls,
-  Vcl.ExtCtrls, Vcl.ComCtrls;
+  Vcl.ExtCtrls;
 
 type
   TfrmReinf = class(TForm)
@@ -25,16 +25,9 @@ type
     btnEnviar: TButton;
     btnConsultar: TButton;
     edtIdLote: TLabeledEdit;
+    mmoXml: TMemo;
     cbVersao: TComboBox;
     lbl2: TLabel;
-    pgc1: TPageControl;
-    tsRetorno: TTabSheet;
-    tsXmlEnviad: TTabSheet;
-    tsXmlRetorno: TTabSheet;
-    mmoXml: TMemo;
-    mmoXmlEnviado: TMemo;
-    mmoXmlRetorno: TMemo;
-    rg: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure btnConfigurarClick(Sender: TObject);
     procedure btnTx2Click(Sender: TObject);
@@ -102,13 +95,7 @@ var
   _RetItemInfoCRTomR5011: IspdInfoCRTomR5011;
   _i, _j, _b: integer;
 begin
-
-  if rg.ItemIndex = 0 then
-  _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text)
-  else if rg.ItemIndex = 1 then
-  _RetConsulta := Reinf.ConsultarIdEvento(edtIdLote.Text)
-  else if rg.ItemIndex = 2 then
-  _RetConsulta := Reinf.ConsultarEventoPorRecibo(edtIdLote.Text);
+  _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text);
 
   mmoXML.Lines.Clear;
   mmoXML.Lines.Add('### CONSULTA PROTOCOLO ###');
@@ -276,6 +263,8 @@ begin
     end;
 
   end;
+  //    mmoXML.Lines.Add('        Xml Retorno: ' + _RetConsulta.XmlRetorno);
+    mmoXML.Lines.Add('        Xml Envio: ' + _RetConsulta.XmlEnviado);
   for _i := 0 to _RetConsulta.CountOcorrencias - 1 do
   begin
     _RetConsultaOcorrenciaEnvio := _RetConsulta.Ocorrencias[_i];
@@ -283,8 +272,6 @@ begin
     mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrenciaEnvio.Codigo);
     mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrenciaEnvio.Descricao);
   end;
-  mmoXmlRetorno.Lines.Add('        Xml Retorno: ' + _RetConsulta.XmlRetorno);
-  mmoXmlEnviado.Lines.Add('        Xml Envio: ' + _RetConsulta.XmlEnviado);
 end;
 
 procedure TfrmReinf.btnEnviarClick(Sender: TObject);
@@ -341,7 +328,6 @@ begin
   edtCnpjSH.Text := '86837822000147';
   edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
   edtEmpregador.Text := '08187168';
-  rg.ItemIndex := 0;
 end;
 
 end.
