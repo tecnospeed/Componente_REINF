@@ -1,0 +1,144 @@
+object fReinf: TfReinf
+  Left = 686
+  Top = 231
+  Caption = 'TecnoSpeed - Demo Reinf - API'
+  ClientHeight = 608
+  ClientWidth = 540
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object lblAmbiente: TLabel
+    Left = 189
+    Top = 39
+    Width = 49
+    Height = 13
+    Caption = 'Ambiente:'
+  end
+  object lbl2: TLabel
+    Left = 367
+    Top = 39
+    Width = 74
+    Height = 13
+    Caption = 'Vers'#227'o Manual:'
+  end
+  object lbl1: TLabel
+    Left = 6
+    Top = 566
+    Width = 531
+    Height = 41
+    AutoSize = False
+    Caption = 
+      'Essa demonstra'#231#227'o utiliza apenas Certificados A1 devidamente cad' +
+      'astrados e configurados'#13#10'para um empregador em nosso portal: eso' +
+      'cial.tecnospeed.com.br'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    OnClick = lbl1Click
+  end
+  object edtCnpjSH: TLabeledEdit
+    Left = 8
+    Top = 16
+    Width = 257
+    Height = 21
+    EditLabel.Width = 140
+    EditLabel.Height = 13
+    EditLabel.Caption = 'CPF / CNPJ SoftWare House:'
+    TabOrder = 0
+  end
+  object edtTokenSH: TLabeledEdit
+    Left = 271
+    Top = 16
+    Width = 266
+    Height = 21
+    EditLabel.Width = 115
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Token SoftWare House:'
+    TabOrder = 1
+  end
+  object edtEmpregador: TLabeledEdit
+    Left = 8
+    Top = 56
+    Width = 171
+    Height = 21
+    EditLabel.Width = 119
+    EditLabel.Height = 13
+    EditLabel.Caption = 'CPF / CNPJ Empregador:'
+    TabOrder = 2
+  end
+  object cbbAmbiente: TComboBox
+    Left = 189
+    Top = 56
+    Width = 170
+    Height = 21
+    TabOrder = 3
+    Items.Strings = (
+      '1 - Produ'#231#227'o'
+      '2 - Homologa'#231#227'o')
+  end
+  object cbbVersao: TComboBox
+    Left = 367
+    Top = 56
+    Width = 170
+    Height = 21
+    TabOrder = 4
+    Items.Strings = (
+      '1.3.02')
+  end
+  object mmoXml: TMemo
+    Left = 8
+    Top = 163
+    Width = 529
+    Height = 397
+    ScrollBars = ssVertical
+    TabOrder = 5
+  end
+  object edtIdLote: TLabeledEdit
+    Left = 8
+    Top = 136
+    Width = 529
+    Height = 21
+    EditLabel.Width = 99
+    EditLabel.Height = 13
+    EditLabel.Caption = 'Identifiador do Lote:'
+    TabOrder = 6
+  end
+  object btnEnviar: TButton
+    Left = 189
+    Top = 88
+    Width = 170
+    Height = 25
+    Caption = 'Enviar'
+    TabOrder = 7
+    OnClick = btnEnviarClick
+  end
+  object btnConsultar: TButton
+    Left = 367
+    Top = 88
+    Width = 168
+    Height = 25
+    Caption = 'Consultar'
+    TabOrder = 8
+    OnClick = btnConsultarClick
+  end
+  object btnGeraTx2: TButton
+    Left = 8
+    Top = 88
+    Width = 171
+    Height = 25
+    Caption = 'Gerar Tx2'
+    TabOrder = 9
+    OnClick = btnGeraTx2Click
+  end
+end

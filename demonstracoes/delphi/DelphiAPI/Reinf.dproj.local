@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2018/05/03 12:24:01.000.096,=C:\Users\vitor.beal\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2018/08/07 13:10:12.000.349,=C:\Users\vitor.beal\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2018/08/07 18:08:06.000.542,C:\DiscoE\ex comp\Reinf\DelphiAPI\Reinf.pas=C:\Users\vitor.beal\Documents\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2018/08/07 18:08:06.000.542,C:\DiscoE\ex comp\Reinf\DelphiAPI\Reinf.dfm=C:\Users\vitor.beal\Documents\Embarcadero\Studio\Projects\Unit4.dfm</Transaction>
+    <Transaction>2018/08/07 18:08:14.000.377,C:\DiscoE\ex comp\Reinf\DelphiAPI\pReinf.dproj=C:\Users\vitor.beal\Documents\Embarcadero\Studio\Projects\Project4.dproj</Transaction>
+    <Transaction>2018/08/08 08:59:04.000.602,C:\DiscoE\ex comp\Reinf\DelphiAPI\Reinf.dfm=C:\DiscoE\ex comp\Reinf\DelphiAPI\UReinf.dfm</Transaction>
+    <Transaction>2018/08/08 08:59:04.000.602,C:\DiscoE\ex comp\Reinf\DelphiAPI\Reinf.pas=C:\DiscoE\ex comp\Reinf\DelphiAPI\UReinf.pas</Transaction>
+    <Transaction>2018/08/08 08:59:25.000.837,C:\DiscoE\ex comp\Reinf\DelphiAPI\pReinf.dproj=C:\DiscoE\ex comp\Reinf\DelphiAPI\Reinf.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

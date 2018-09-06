@@ -1,0 +1,168 @@
+unit UReinf;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
+  Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  WinHttp_TLB, superobject;
+
+type
+  TfReinf = class(TForm)
+    lblAmbiente: TLabel;
+    lbl2: TLabel;
+    edtCnpjSH: TLabeledEdit;
+    edtTokenSH: TLabeledEdit;
+    edtEmpregador: TLabeledEdit;
+    cbbAmbiente: TComboBox;
+    cbbVersao: TComboBox;
+    mmoXml: TMemo;
+    edtIdLote: TLabeledEdit;
+    btnEnviar: TButton;
+    btnConsultar: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure btnEnviarClick(Sender: TObject);
+    procedure btnConsultarClick(Sender: TObject);
+  private
+    { Private declarations }
+    _http: IWinHttpRequest;
+  public
+    { Public declarations }
+  end;
+
+var
+  fReinf: TfReinf;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfReinf.btnConsultarClick(Sender: TObject);
+var
+  url: string;
+  obj, objEvento, objEventoOcor: ISuperObject;
+begin
+  if edtIdLote.Text = '' then
+    ShowMessage('Informe um identificador de lote!')
+  else
+  begin
+//  url := 'https://api.tecnospeed.com.br/reinf/v1/evento/consultar/' + edtIdLote.Text + '?ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + '&versaomanual=' + cbbVersao.Text;
+    url := 'https://api.tecnospeed.com.br/reinf/v1/evento/consultar/' + edtIdLote.Text + '?ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + '&versaomanual=2';
+    try
+      _http := CoWinHttpRequest.Create;
+      _http.Open('GET', url, False);
+      _http.SetRequestHeader('cnpj_sh', edtCnpjSH.Text);
+      _http.SetRequestHeader('token_sh', edtTokenSH.Text);
+      _http.Send('');
+      obj := SO(_http.ResponseText);
+      if obj.AsString = '' then
+        ShowMessage('Verifique seu identificador do lote')
+      else if obj.S['error'] <> '' then
+      begin
+        mmoXml.Clear;
+        mmoXml.Text := 'Erro';
+        mmoXml.Text := mmoXml.Text + #13#10 + ' Erro ao Enviar evento: ' + obj.S['error.message'];
+      end
+      else if obj.I['data.status_envio.codigo'] = 1 then
+      begin
+        mmoXml.Clear;
+        mmoXml.Text := 'Mensagem: ' + obj.S['message'];
+        mmoXml.Text := mmoXml.Text + #13#10 + ' Erro ao Enviar evento: ' + obj.S['data.status_envio.mensagem'];
+      end
+      else
+      begin
+        while (obj.S['data.status_consulta.mensagem'] = '') or (obj.S['data.status_consulta.mensagem'] = 'EMPROCESSAMENTO') do
+        begin
+          Sleep(1000);
+          _http.Send('');
+          obj := SO(_http.ResponseText);
+        end;
+        if obj.S['data.status_consulta.mensagem'] = 'SUCESSO' then
+        begin
+          mmoXml.Clear;
+          mmoXml.Text := 'Mensagem: ' + obj.S['message'];
+          for objEvento in SO(obj.S['data.eventos']) do
+          begin
+            if objEvento.S['status.mensagem'] = 'ERRO' then
+            begin
+              for objEventoOcor in SO(objEvento.S['ocorrencias']) do
+              begin
+                mmoXml.Text := mmoXml.Text + #13#10 + ' Status do evento: ' + objEvento.S['status.mensagem'];
+                mmoXml.Text := mmoXml.Text + #13#10 + '  Codigo de erro do evento: ' + objEventoOcor.S['codigo'];
+                mmoXml.Text := mmoXml.Text + #13#10 + '  Descricao do erro do evento: ' + objEventoOcor.S['descricao'];
+              end;
+            end;
+            if objEvento.S['status.mensagem'] = 'SUCESSO' then
+            begin
+              mmoXml.Text := mmoXml.Text + #13#10 + ' Status do evento: ' + objEvento.S['status.mensagem'];
+              mmoXml.Text := mmoXml.Text + #13#10 + ' Recibo: ' + objEvento.S['recibo'];
+            end;
+          end;
+        end;
+      end;
+    except
+      on E: Exception do
+        mmoXml.Text := E.Message;
+    end;
+  end;
+
+end;
+
+procedure TfReinf.btnEnviarClick(Sender: TObject);
+var
+  url, tx2: string;
+  obj: ISuperObject;
+begin
+//  tx2 := 'cpfcnpjtransmissor=08187168000160' + #13#10 + 'cpfcnpjempregador=' + edtEmpregador.text + #13#10 + 'versaomanual=' +
+//  cbbVersao.Text + #13#10 + 'ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + #13#10 + mmoXml.Text;
+  if mmoXml.Text <> '' then
+  begin
+    tx2 := 'cpfcnpjtransmissor=08187168000160' + #13#10 + 'cpfcnpjempregador=' + edtEmpregador.text + #13#10 + 'versaomanual=2' + #13#10 + 'ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + #13#10 + mmoXml.Text;
+    mmoXml.Clear;
+    url := 'http://api.tecnospeed.com.br/reinf/v1/evento/enviar/tx2';
+    try
+      _http := CoWinHttpRequest.Create;
+      _http.Open('POST', url, False);
+      _http.SetRequestHeader('cnpj_sh', edtCnpjSH.Text);
+      _http.SetRequestHeader('token_sh', edtTokenSH.Text);
+      _http.SetRequestHeader('Content-Type', 'text/tx2');
+      _http.Send(tx2);
+      mmoXml.Clear;
+      obj := SO(_http.ResponseText);
+      if obj.S['error'] <> '' then
+      begin
+        mmoXml.Clear;
+        mmoXml.Text := 'Erro';
+        mmoXml.Text := mmoXml.Text + #13#10 + ' Erro ao Enviar evento: ' + obj.S['error.message'];
+      end
+      else
+      begin
+        edtIdLote.Text := obj.S['data.id'];
+        mmoXml.text := 'Mensagem: ' + obj.S['message'];
+        if obj.S['data.id'] <> '' then
+        begin
+          mmoXml.Text := mmoXml.Text + #13#10 + ' Id de lote: ' + obj.S['data.id'];
+          mmoXml.Text := mmoXml.Text + #13#10 + '  Codigo do retorno do envio: ' + IntToStr(obj.I['data.status_envio.codigo']);
+          mmoXml.Text := mmoXml.Text + #13#10 + '  Mensagem do retorno do envio: ' + obj.S['data.status_envio.mensagem'];
+        end;
+      end;
+    except
+      on E: Exception do
+        mmoXml.Text := E.Message;
+    end;
+  end
+  else
+    ShowMessage('É necessário informar o TX2!');
+end;
+
+procedure TfReinf.FormCreate(Sender: TObject);
+begin
+  edtCnpjSH.Text := '86837822000147';
+  edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
+  edtEmpregador.Text := '08187168000160';
+  cbbAmbiente.ItemIndex := 1;
+  cbbVersao.ItemIndex := 0;
+end;
+
+end.
+
