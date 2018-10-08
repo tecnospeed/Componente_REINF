@@ -63,6 +63,7 @@ end;
 
 procedure TfrmReinf.btnConfigurarClick(Sender: TObject);
 begin
+  mmoXml.Clear;
   Reinf.ConfigurarSoftwareHouse(edtCnpjSH.Text, edtTokenSH.Text);
   Reinf.CpfCnpjEmpregador := edtEmpregador.Text;
   Reinf.DiretorioEsquemas := edtEsquemas.Text;
@@ -79,6 +80,7 @@ begin
     Reinf.Ambiente := akProducao;
   if cbAmbiente.Text = '2 - Homologação' then
     Reinf.Ambiente := akPreProducaoReais;
+  mmoXml.Text := 'Componente Configurado!'  ;
 end;
 
 procedure TfrmReinf.btnConsultarClick(Sender: TObject);
@@ -102,14 +104,14 @@ var
   _RetItemInfoCRTomR5011: IspdInfoCRTomR5011;
   _i, _j, _b: integer;
 begin
-
+  mmoXML.Clear;
+  mmoXML.Lines.Add('Consultando eventos');
   if rg.ItemIndex = 0 then
   _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text)
   else if rg.ItemIndex = 1 then
   _RetConsulta := Reinf.ConsultarIdEvento(edtIdLote.Text)
   else if rg.ItemIndex = 2 then
   _RetConsulta := Reinf.ConsultarEventoPorRecibo(edtIdLote.Text);
-
   mmoXML.Lines.Clear;
   mmoXML.Lines.Add('### CONSULTA PROTOCOLO ###');
   mmoXML.Lines.Add('Número do Protocolo: ' + _RetConsulta.NumeroProtocolo);
@@ -131,15 +133,17 @@ begin
     begin
       mmoXML.Lines.Add('     R5001');
       mmoXML.Lines.Add('      PeriodoApuracao: ' + _RetConsultaItem.R5001.PeriodoApuracao);
-      mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.NrInsc);
-      mmoXML.Lines.Add('      TpInsc: ' + _RetConsultaItem.R5001.TpInsc);
-      mmoXML.Lines.Add('      NrRecArqBase: ' + _RetConsultaItem.R5001.NrRecArqBase);
+
+      mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.IdeContri.NrInsc);
+      mmoXML.Lines.Add('      TpInsc: ' + _RetConsultaItem.R5001.IdeContri.TpInsc);
+      mmoXML.Lines.Add('      NrRecArqBase: ' + _RetConsultaItem.R5001.InfoTotal.NrRecArqBase);
       for _j := 0 to _RetConsultaItem.R5001.CountRTom - 1 do
       begin
         _RetItemRTomR5001 := (_RetConsultaItem.R5001.RTom[_j]);
         mmoXML.Lines.Add('      RTom:  ');
         mmoXML.Lines.Add('      CnpjPrestador: ' + _RetItemRTomR5001.CnpjPrestador);
         mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemRTomR5001.VlrTotalBaseRet);
+        mmoXML.Lines.Add('      CNO: ' + _RetItemRTomR5001.CNO);
         for _b := 0 to _RetItemRTomR5001.CountInfoCRTom - 1 do
         begin
           _RetItemInfoCRTomR5001 := _RetItemRTomR5001.InfoCRTom[_b];
@@ -212,6 +216,7 @@ begin
         mmoXML.Lines.Add('      RTom:  ');
         mmoXML.Lines.Add('      CnpjPrestador: ' + _RetItemRTomR5011.CnpjPrestador);
         mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemRTomR5011.VlrTotalBaseRet);
+        mmoXML.Lines.Add('      CNO: ' + _RetItemRTomR5011.CNO);
         for _b := 0 to _RetItemRTomR5011.CountInfoCRTom - 1 do
         begin
           _RetItemInfoCRTomR5011 := _RetItemRTomR5011.InfoCRTom[_b];
@@ -259,8 +264,6 @@ begin
         _RetItemRRecRepADR5011 := (_RetConsultaItem.R5011.RRecRepAD[_j]);
         mmoXML.Lines.Add('      R5011 ');
         mmoXML.Lines.Add('      RRecRepAD:  ');
-        mmoXML.Lines.Add('      CnpjAssocDesp: ' + _RetItemRRecRepADR5011.CnpjAssocDesp);
-        mmoXML.Lines.Add('      VlrTotalRep: ' + _RetItemRRecRepADR5011.VlrTotalRep);
         mmoXML.Lines.Add('      CRRecRepAD: ' + _RetItemRRecRepADR5011.CRRecRepAD);
         mmoXML.Lines.Add('      VlrCRRecRepAD: ' + _RetItemRRecRepADR5011.VlrCRRecRepAD);
         mmoXML.Lines.Add('      VlrCRRecRepADSusp: ' + _RetItemRRecRepADR5011.VlrCRRecRepADSusp);
@@ -283,8 +286,10 @@ begin
     mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrenciaEnvio.Codigo);
     mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrenciaEnvio.Descricao);
   end;
-  mmoXmlRetorno.Lines.Add('        Xml Retorno: ' + _RetConsulta.XmlRetorno);
-  mmoXmlEnviado.Lines.Add('        Xml Envio: ' + _RetConsulta.XmlEnviado);
+  mmoXmlRetorno.Lines.Clear;
+  mmoXmlRetorno.Lines.Add(_RetConsulta.XmlRetorno);
+  mmoXmlEnviado.Lines.Clear;
+  mmoXmlEnviado.Lines.Add(_RetConsulta.XmlEnviado);
 end;
 
 procedure TfrmReinf.btnEnviarClick(Sender: TObject);
@@ -292,7 +297,6 @@ var
   _RetEnvio: IspdReinfRetEnviarLoteEventos;
 begin
   _RetEnvio := Reinf.EnviarLoteEventos(mmoXML.Text);
-
   mmoXML.Lines.Clear;
   mmoXML.Lines.Add('### INCLUIR EVENTO ###');
   mmoXML.Lines.Add('Identificador do Lote: ' + _RetEnvio.IdLote);
@@ -332,15 +336,15 @@ end;
 procedure TfrmReinf.FormCreate(Sender: TObject);
 begin
   Reinf := TspdReinfClientX.Create(nil);
-  frmReinf.Caption := 'Reinf - TecnoSpeed - ' + Reinf.Versao;
+  frmReinf.Caption := 'Reinf - TecnoSpeed - OCX ' + Reinf.Versao + ' - TLB ' + ReinfVersaoTLB;
   cbCertificado.Items.Text := Reinf.ListarCertificados(#13#10);
   cbVersao.Items.Text := Reinf.ListarVersaoManual(#13#10);
   cbAmbiente.ItemIndex := 1;
   cbCertificado.ItemIndex := 0;
   cbVersao.ItemIndex := 0;
-  edtCnpjSH.Text := '86837822000147';
-  edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
-  edtEmpregador.Text := '08187168';
+  edtCnpjSH.Text := '';
+  edtTokenSH.Text := '';
+  edtEmpregador.Text := '';
   rg.ItemIndex := 0;
 end;
 

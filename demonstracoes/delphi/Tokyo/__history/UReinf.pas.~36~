@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ReinfClientX_TLB, Vcl.StdCtrls,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.ComCtrls;
 
 type
   TfrmReinf = class(TForm)
@@ -25,9 +25,16 @@ type
     btnEnviar: TButton;
     btnConsultar: TButton;
     edtIdLote: TLabeledEdit;
-    mmoXml: TMemo;
     cbVersao: TComboBox;
     lbl2: TLabel;
+    pgc1: TPageControl;
+    tsRetorno: TTabSheet;
+    tsXmlEnviad: TTabSheet;
+    tsXmlRetorno: TTabSheet;
+    mmoXml: TMemo;
+    mmoXmlEnviado: TMemo;
+    mmoXmlRetorno: TMemo;
+    rg: TRadioGroup;
     procedure FormCreate(Sender: TObject);
     procedure btnConfigurarClick(Sender: TObject);
     procedure btnTx2Click(Sender: TObject);
@@ -61,8 +68,7 @@ begin
   Reinf.DiretorioEsquemas := edtEsquemas.Text;
   Reinf.DiretorioTemplates := edtTemplates.Text;
   Reinf.NomeCertificado := cbCertificado.Text;
-  if cbVersao.Text = 'vm13' then
-    Reinf.VersaoManual := 2;
+    Reinf.VersaoManual := cbVersao.Text;
 //  Reinf.CaminhoCertificado := ''; Usado para passar o caminho do .pfx, funciona apenas com certificados A1
 //  Reinf.SenhaCertificado := ''; Usado para passar a senha do certificado caso o Caminho certificado seja usado
 //  Reinf.Pincode := ''; Usado para passar a senha do certificado A3 automaticamente.
@@ -77,10 +83,10 @@ end;
 
 procedure TfrmReinf.btnConsultarClick(Sender: TObject);
 var
-  _RetConsulta: IspdRetConsultarLote;
-  _RetConsultaItem: IspdRetConsultarLoteItem;
-  _RetConsultaOcorrencia: IspdRetConsultarLoteOcorrencia;
-  _RetConsultaOcorrenciaEnvio: IspdRetConsultarLoteOcorrenciaEnvio;
+  _RetConsulta: IspdReinfRetConsultarLote;
+  _RetConsultaItem: IspdReinfRetConsultarLoteItem;
+  _RetConsultaOcorrencia: IspdReinfRetConsultarLoteOcorrencia;
+  _RetConsultaOcorrenciaEnvio: IspdReinfRetConsultarLoteOcorrenciaEnvio;
   _RetItemRTomR5011: IspdRTomR5011;
   _RetItemRComlR5011: IspdRComlR5011;
   _RetItemRCPRBR5011: IspdRCPRBR5011;
@@ -96,7 +102,13 @@ var
   _RetItemInfoCRTomR5011: IspdInfoCRTomR5011;
   _i, _j, _b: integer;
 begin
-  _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text);
+
+  if rg.ItemIndex = 0 then
+  _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text)
+  else if rg.ItemIndex = 1 then
+  _RetConsulta := Reinf.ConsultarIdEvento(edtIdLote.Text)
+  else if rg.ItemIndex = 2 then
+  _RetConsulta := Reinf.ConsultarEventoPorRecibo(edtIdLote.Text);
 
   mmoXML.Lines.Clear;
   mmoXML.Lines.Add('### CONSULTA PROTOCOLO ###');
@@ -115,8 +127,8 @@ begin
     mmoXML.Lines.Add('    Status do Evento: ' + _RetConsultaItem.Status);
 
 
-//    if not _RetConsultaItem.R5001.IsEmpty then
-//    begin
+    if not _RetConsultaItem.R5001.IsEmpty then
+    begin
       mmoXML.Lines.Add('     R5001');
       mmoXML.Lines.Add('      PeriodoApuracao: ' + _RetConsultaItem.R5001.PeriodoApuracao);
       mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.NrInsc);
@@ -189,10 +201,10 @@ begin
         mmoXML.Lines.Add('      VlrCRRecEspetDesp: ' + _RetItemRRecEspetDespR5001.VlrCRRecEspetDesp);
         mmoXML.Lines.Add('      VlrCRRecEspetDespSusp: ' + _RetItemRRecEspetDespR5001.VlrCRRecEspetDespSusp);
       end;
-//    end;
+    end;
 
-//    if not _RetConsultaItem.R5011.IsEmpty then
-//    begin
+    if not _RetConsultaItem.R5011.IsEmpty then
+    begin
       for _j := 0 to _RetConsultaItem.R5011.CountRTom - 1 do
       begin
         _RetItemRTomR5011 := (_RetConsultaItem.R5011.RTom[_j]);
@@ -219,15 +231,15 @@ begin
         mmoXML.Lines.Add('      VlrCRComl: ' + _RetItemRComlR5011.VlrCRComl);
         mmoXML.Lines.Add('      VlrCRComlSusp: ' + _RetItemRComlR5011.VlrCRComlSusp);
       end;
-//      for _j := 0 to _RetConsultaItem.R5011.CountRCPRB - 1 do
-//      begin
-//        _RetItemRCPRBR5011 := (_RetConsultaItem.R5011.RCPRB[_j]);
-//        mmoXML.Lines.Add('      R5011 ');
-//        mmoXML.Lines.Add('      RCPRB:  ');
-//        mmoXML.Lines.Add('      CRCPRB: ' + _RetItemRCPRBR5011.CRCPRB);
-//        mmoXML.Lines.Add('      vlrCRCPRB: ' + _RetItemRCPRBR5011.vlrCRCPRB);
-//        mmoXML.Lines.Add('      vlrCRCPRBSusp: ' + _RetItemRCPRBR5011.vlrCRCPRBSusp);
-//      end;
+      for _j := 0 to _RetConsultaItem.R5011.CountRCPRB - 1 do
+      begin
+        _RetItemRCPRBR5011 := (_RetConsultaItem.R5011.RCPRB[_j]);
+        mmoXML.Lines.Add('      R5011 ');
+        mmoXML.Lines.Add('      RCPRB:  ');
+        mmoXML.Lines.Add('      CRCPRB: ' + _RetItemRCPRBR5011.CRCPRB);
+        mmoXML.Lines.Add('      vlrCRCPRB: ' + _RetItemRCPRBR5011.vlrCRCPRB);
+        mmoXML.Lines.Add('      vlrCRCPRBSusp: ' + _RetItemRCPRBR5011.vlrCRCPRBSusp);
+      end;
       for _j := 0 to _RetConsultaItem.R5011.CountRPrest - 1 do
       begin
         _RetItemRPrestR5011 := (_RetConsultaItem.R5011.RPrest[_j]);
@@ -253,7 +265,7 @@ begin
         mmoXML.Lines.Add('      VlrCRRecRepAD: ' + _RetItemRRecRepADR5011.VlrCRRecRepAD);
         mmoXML.Lines.Add('      VlrCRRecRepADSusp: ' + _RetItemRRecRepADR5011.VlrCRRecRepADSusp);
       end;
-//    end;
+    end;
 
     for _j := 0 to _RetConsultaItem.Count - 1 do
     begin
@@ -262,8 +274,6 @@ begin
       mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrencia.Codigo);
       mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrencia.Descricao);
     end;
-//    mmoXML.Lines.Add('        Xml Retorno: ' + _RetConsulta.XmlRetorno);
-//    mmoXML.Lines.Add('        Xml Envio: ' + _RetConsulta.XmlEnviado);
 
   end;
   for _i := 0 to _RetConsulta.CountOcorrencias - 1 do
@@ -273,11 +283,13 @@ begin
     mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrenciaEnvio.Codigo);
     mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrenciaEnvio.Descricao);
   end;
+  mmoXmlRetorno.Lines.Add('        Xml Retorno: ' + _RetConsulta.XmlRetorno);
+  mmoXmlEnviado.Lines.Add('        Xml Envio: ' + _RetConsulta.XmlEnviado);
 end;
 
 procedure TfrmReinf.btnEnviarClick(Sender: TObject);
 var
-  _RetEnvio: IspdRetEnviarLoteEventos;
+  _RetEnvio: IspdReinfRetEnviarLoteEventos;
 begin
   _RetEnvio := Reinf.EnviarLoteEventos(mmoXML.Text);
 
@@ -322,12 +334,14 @@ begin
   Reinf := TspdReinfClientX.Create(nil);
   frmReinf.Caption := 'Reinf - TecnoSpeed - ' + Reinf.Versao;
   cbCertificado.Items.Text := Reinf.ListarCertificados(#13#10);
+  cbVersao.Items.Text := Reinf.ListarVersaoManual(#13#10);
   cbAmbiente.ItemIndex := 1;
   cbCertificado.ItemIndex := 0;
   cbVersao.ItemIndex := 0;
   edtCnpjSH.Text := '86837822000147';
   edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
   edtEmpregador.Text := '08187168';
+  rg.ItemIndex := 0;
 end;
 
 end.
