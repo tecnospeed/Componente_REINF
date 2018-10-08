@@ -21,7 +21,7 @@ namespace REINF_CSharp
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text = "Reinf - TecnoSpeed - " + reinf.Versao;
+            this.Text = "Reinf - TecnoSpeed - OCX " + reinf.Versao;
             string[] vetor, vetor2;
             tbEmpregador.Text = "08187168";
             tbTemplates.Text = @"C:\Program Files\TecnoSpeed\Reinf\Arquivos\Templates\";
@@ -48,6 +48,7 @@ namespace REINF_CSharp
 
         private void btnConfigurarSH_Click(object sender, EventArgs e)
         {
+            tbRetorno.Clear();
             reinf.ConfigurarSoftwareHouse(tbCNPJSH.Text, tbTokenSH.Text);
             reinf.CpfCnpjEmpregador = tbEmpregador.Text;
             reinf.VersaoManual = cbVersao.Text;
@@ -62,6 +63,7 @@ namespace REINF_CSharp
             {
                 reinf.Ambiente = ReinfClientX.AmbienteKind.akPreProducaoReais;
             }
+            tbRetorno.Text = "Componente Configurado";
         }
 
         private void btnCarregaTx2_Click(object sender, EventArgs e)
@@ -126,6 +128,8 @@ namespace REINF_CSharp
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
+            tbRetorno.Clear();
+            tbRetorno.Text = "Enviando Eventos";
             ReinfClientX.IspdReinfRetConsultarLote retConsulta;
             ReinfClientX.IspdReinfRetConsultarLoteItem retConsultaItem;
             ReinfClientX.IspdReinfRetConsultarLoteOcorrencia retConsultaOcorrencia;
@@ -183,9 +187,9 @@ namespace REINF_CSharp
                 {
                     tbRetorno.Text += "     R5001 \r\n";
                     tbRetorno.Text += "     Periodo Apuração: " + retConsultaItem.R5001.PeriodoApuracao + "\r\n";
-                    tbRetorno.Text += "     NrInsc: " + retConsultaItem.R5001.NrInsc + " \r\n";
-                    tbRetorno.Text += "     TpInsc" + retConsultaItem.R5001.TpInsc + " \r\n";
-                    tbRetorno.Text += "     NrRecArqBase" + retConsultaItem.R5001.NrRecArqBase + " \r\n";
+                    tbRetorno.Text += "     NrInsc: " + retConsultaItem.R5001.IdeEmp.NrInsc + " \r\n";
+                    tbRetorno.Text += "     TpInsc" + retConsultaItem.R5001.IdeEmp.TpInsc + " \r\n";
+                    tbRetorno.Text += "     NrRecArqBase" + retConsultaItem.R5001.InfoTotal.NrRecArqBase + " \r\n";
 
                     for (int k = 0; k < retConsultaItem.R5001.CountRTom(); k++)
                     {
@@ -193,6 +197,7 @@ namespace REINF_CSharp
                         tbRetorno.Text += "     RTom: \r\n";
                         tbRetorno.Text += "     CnpjPrestador: " + RetItemRTomR5001.CnpjPrestador + " \r\n";
                         tbRetorno.Text += "     VlrTotalBaseRet" + RetItemRTomR5001.VlrTotalBaseRet + " \r\n";
+                        tbRetorno.Text += "     CNO" + RetItemRTomR5001.CNO + " \r\n";
                         for (int l = 0; l < RetItemRTomR5001.CountInfoCRTom(); l++)
                         {
                             RetItemInfoCRTomR5001 = RetItemRTomR5001.InfoCRTom[l];
@@ -313,8 +318,6 @@ namespace REINF_CSharp
                         RetItemRRecRepADR5011 = retConsultaItem.R5011.RRecRepAD[k];
                         tbRetorno.Text += "      R5011 \r\n";
                         tbRetorno.Text += "      RRecRepAD:  \r\n";
-                        tbRetorno.Text += "      CnpjAssocDesp: " + RetItemRRecRepADR5011.CnpjAssocDesp + "\r\n";
-                        tbRetorno.Text += "      VlrTotalRep: " + RetItemRRecRepADR5011.VlrTotalRep + "\r\n";
                         tbRetorno.Text += "      CRRecRepAD: " + RetItemRRecRepADR5011.CRRecRepAD + "\r\n";
                         tbRetorno.Text += "      VlrCRRecRepAD: " + RetItemRRecRepADR5011.VlrCRRecRepAD + "\r\n";
                         tbRetorno.Text += "      VlrCRRecRepADSusp: " + RetItemRRecRepADR5011.VlrCRRecRepADSusp + "\r\n";
