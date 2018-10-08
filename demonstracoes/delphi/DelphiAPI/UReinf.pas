@@ -50,8 +50,7 @@ begin
     ShowMessage('Informe um identificador de lote!')
   else
   begin
-//  url := 'https://api.tecnospeed.com.br/reinf/v1/evento/consultar/' + edtIdLote.Text + '?ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + '&versaomanual=' + cbbVersao.Text;
-    url := 'https://api.tecnospeed.com.br/reinf/v1/evento/consultar/' + edtIdLote.Text + '?ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + '&versaomanual=2';
+  url := 'https://api.tecnospeed.com.br/reinf/v1/evento/consultar/' + edtIdLote.Text + '?ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + '&versaomanual=' + cbbVersao.Text;
     try
       mmoXml.Text := 'Realizando consulta do evento!';
       _http := CoWinHttpRequest.Create;
@@ -118,11 +117,10 @@ var
   url, tx2: string;
   obj: ISuperObject;
 begin
-//  tx2 := 'cpfcnpjtransmissor=08187168000160' + #13#10 + 'cpfcnpjempregador=' + edtEmpregador.text + #13#10 + 'versaomanual=' +
-//  cbbVersao.Text + #13#10 + 'ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + #13#10 + mmoXml.Text;
+  tx2 := 'cpfcnpjtransmissor=08187168000160' + #13#10 + 'cpfcnpjempregador=' + edtEmpregador.text + #13#10 + 'versaomanual=' +
+  cbbVersao.Text + #13#10 + 'ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + #13#10 + mmoXml.Text;
   if mmoXml.Text <> '' then
   begin
-    tx2 := 'cpfcnpjtransmissor=08187168000160' + #13#10 + 'cpfcnpjempregador=' + edtEmpregador.text + #13#10 + 'versaomanual=2' + #13#10 + 'ambiente=' + IntToStr(cbbAmbiente.ItemIndex + 1) + #13#10 + mmoXml.Text;
     mmoXml.Clear;
     url := 'http://api.tecnospeed.com.br/reinf/v1/evento/enviar/tx2';
     try

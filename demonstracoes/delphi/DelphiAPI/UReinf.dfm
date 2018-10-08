@@ -86,13 +86,14 @@ object fReinf: TfReinf
       '2 - Homologa'#231#227'o')
   end
   object cbbVersao: TComboBox
-    Left = 367
-    Top = 56
+    Left = 365
+    Top = 58
     Width = 170
     Height = 21
     TabOrder = 4
     Items.Strings = (
-      '1.3.02')
+      '1.3.02'
+      '1.4.00')
   end
   object mmoXml: TMemo
     Left = 8
