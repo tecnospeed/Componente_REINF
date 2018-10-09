@@ -1,6 +1,6 @@
 object frmReinf: TfrmReinf
-  Left = 192
-  Top = 107
+  Left = 253
+  Top = 132
   Width = 1116
   Height = 419
   Caption = 'frmReinf'
@@ -183,7 +183,7 @@ object frmReinf: TfrmReinf
     Top = 0
     Width = 561
     Height = 385
-    ActivePage = tsRetorno
+    ActivePage = TabSheet2
     TabOrder = 15
     object tsRetorno: TTabSheet
       Caption = 'Retorno'
