@@ -124,14 +124,15 @@
 		if R5001.IsEmpty = false then
         response.Write("     R5001") %> <br> <%
         response.Write("      PeriodoApuracao: " & R5001.PeriodoApuracao) %> <br> <%
-        response.Write("      NrInsc: " & R5001.NrInsc) %> <br> <%
-        response.Write("      TpInsc: " & R5001.TpInsc) %> <br> <%
-        response.Write("      NrRecArqBase: " & R5001.NrRecArqBase) %> <br> <%
+        response.Write("      NrInsc: " & R5001.IdeEmp.NrInsc) %> <br> <%
+        response.Write("      TpInsc: " & R5001.IdeEmp.TpInsc) %> <br> <%
+        response.Write("      NrRecArqBase: " & R5001.InfoTotal.NrRecArqBase) %> <br> <%
         For a = 0 To (R5001.CountRTom - 1)
 			Set RTom5001 = R5001.RTom(a)
             response.Write("      RTom:  ") %> <br> <%
             response.Write("      CnpjPrestador: " & RTom5001.CnpjPrestador) %> <br> <%
             response.Write("      VlrTotalBaseRet: " & RTom5001.VlrTotalBaseRet) %> <br> <%
+			response.Write("      CNO: " & RTom5001.CNO) %> <br> <%
                 For b = 0 To (RTom5001.CountInfoCRTom - 1)
 				Set CRTom5001 = RTom5001.InfoCRTom(b)
                     response.Write("       InfoCRTOM: ") %> <br> <%				
@@ -236,8 +237,6 @@
 			Set RRecRepAD5011 = R5011.RRecRepAD(a)
             response.Write("      R5011 ") %> <br> <%
             response.Write("      RRecRepAD:  ") %> <br> <%
-            response.Write("      CnpjAssocDesp: " & RRecRepAD5011.CnpjAssocDesp) %> <br> <%
-            response.Write("      VlrTotalRep: " & RRecRepAD5011.vlrTotalRep) %> <br> <%
             response.Write("      VlrTotalRet: " & RRecRepAD5011.CRRecRepAD) %> <br> <%
             response.Write("      VlrTotalNRet: " & RRecRepAD5011.vlrCRRecRepAD) %> <br> <%
 			response.Write("      vlrCRRecRepADSusp: " & RRecRepAD5011.vlrCRRecRepADSusp) %> <br> <%

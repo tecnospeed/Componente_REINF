@@ -85,7 +85,7 @@ namespace REINF_CSharp
             tbRetorno.Text += "fimValid_14=\r\n";
             tbRetorno.Text += "classTrib_16=01\r\n";
             tbRetorno.Text += "indEscrituracao_17=0\r\n";
-            tbRetorno.Text += "indDesoneracao_18=1\r\n";
+            tbRetorno.Text += "indDesoneracao_18=0\r\n";
             tbRetorno.Text += "indAcordoIsenMulta_19=0\r\n";
             tbRetorno.Text += "indSitPJ_20=0\r\n";
             tbRetorno.Text += "nmCtt_22=Nome do Contato Teste\r\n";
