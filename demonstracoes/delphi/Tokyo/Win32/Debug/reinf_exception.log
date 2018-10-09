@@ -1,2 +1,5 @@
 [08/08/2018 10:25:05:311] 6908 - EspdReinfDataSetTX2ConteudoInvalidoException : Comando não encontrado: "SALVARR1000"
 [08/08/2018 10:34:57:459] 10140 - EspdReinfDataSetTX2ConteudoInvalidoException : Comando não encontrado: "SALVARR1000"
+[08/10/2018 16:35:48:502] 2000 - EspdReinfDataSetTX2ConteudoInvalidoException : TX2 inválido
+[08/10/2018 16:35:59:832] 2000 - EspdReinfDataSetTX2ConteudoInvalidoException : Comando não encontrado: "SALVARR2099"
+[08/10/2018 17:04:38:868] 10784 - EspdReinfDataSetTX2ConteudoInvalidoException : TX2 inválido

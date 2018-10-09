@@ -319,7 +319,7 @@ begin
   mmoXML.Lines.Add('iniValid_13=2018-07');
   mmoXML.Lines.Add('classTrib_16=01');
   mmoXML.Lines.Add('indEscrituracao_17=0');
-  mmoXML.Lines.Add('indDesoneracao_18=1');
+  mmoXML.Lines.Add('indDesoneracao_18=0');
   mmoXML.Lines.Add('indAcordoIsenMulta_19=0');
   mmoXML.Lines.Add('indSitPJ_20=0');
   mmoXML.Lines.Add('nmCtt_22=Nome do Contato');
@@ -342,9 +342,9 @@ begin
   cbAmbiente.ItemIndex := 1;
   cbCertificado.ItemIndex := 0;
   cbVersao.ItemIndex := 0;
-  edtCnpjSH.Text := '';
-  edtTokenSH.Text := '';
-  edtEmpregador.Text := '';
+  edtCnpjSH.Text := '86837822000147';
+  edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
+  edtEmpregador.Text := '08187168';
   rg.ItemIndex := 0;
 end;
 
