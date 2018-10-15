@@ -133,9 +133,10 @@ begin
     begin
       mmoXML.Lines.Add('     R5001');
       mmoXML.Lines.Add('      PeriodoApuracao: ' + _RetConsultaItem.R5001.PeriodoApuracao);
-
       mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.IdeContri.NrInsc);
       mmoXML.Lines.Add('      TpInsc: ' + _RetConsultaItem.R5001.IdeContri.TpInsc);
+      mmoXML.Lines.Add('      NrInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEmp.NrInsc);
+      mmoXML.Lines.Add('      TpInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEmp.TpInsc);
       mmoXML.Lines.Add('      NrRecArqBase: ' + _RetConsultaItem.R5001.InfoTotal.NrRecArqBase);
       for _j := 0 to _RetConsultaItem.R5001.CountRTom - 1 do
       begin
