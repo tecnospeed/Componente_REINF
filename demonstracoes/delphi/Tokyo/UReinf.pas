@@ -105,7 +105,9 @@ var
   _i, _j, _b: integer;
 begin
   mmoXML.Clear;
-  mmoXML.Lines.Add('Consultando eventos');
+  mmoXml.Text := '';
+  mmoXml.Text := 'Consultando eventos';
+  Application.ProcessMessages;
   if rg.ItemIndex = 0 then
   _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text)
   else if rg.ItemIndex = 1 then
