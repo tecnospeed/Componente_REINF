@@ -196,6 +196,10 @@ object frmReinf: TfrmReinf
     object tsXmlEnviad: TTabSheet
       Caption = 'Xml Enviado'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object mmoXmlEnviado: TMemo
         Left = 3
         Top = 3
@@ -208,6 +212,10 @@ object frmReinf: TfrmReinf
     object tsXmlRetorno: TTabSheet
       Caption = 'Xml Retorno'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object mmoXmlRetorno: TMemo
         Left = 3
         Top = 3

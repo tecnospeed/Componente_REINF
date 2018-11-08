@@ -344,10 +344,8 @@ begin
   cbVersao.Items.Text := Reinf.ListarVersaoManual(#13#10);
   cbAmbiente.ItemIndex := 1;
   cbCertificado.ItemIndex := 0;
-  cbVersao.ItemIndex := 0;
-  edtCnpjSH.Text := '86837822000147';
-  edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
-  edtEmpregador.Text := '08187168';
+  cbVersao.ItemIndex := 1;
+
   rg.ItemIndex := 0;
 end;
 
