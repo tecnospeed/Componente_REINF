@@ -187,8 +187,8 @@ namespace REINF_CSharp
                 {
                     tbRetorno.Text += "     R5001 \r\n";
                     tbRetorno.Text += "     Periodo Apuração: " + retConsultaItem.R5001.PeriodoApuracao + "\r\n";
-                    tbRetorno.Text += "     NrInsc: " + retConsultaItem.R5001.IdeEmp.NrInsc + " \r\n";
-                    tbRetorno.Text += "     TpInsc" + retConsultaItem.R5001.IdeEmp.TpInsc + " \r\n";
+                    tbRetorno.Text += "     NrInsc: " + retConsultaItem.R5001.IdeEstab.NrInsc + " \r\n";
+                    tbRetorno.Text += "     TpInsc" + retConsultaItem.R5001.IdeEstab.TpInsc + " \r\n";
                     tbRetorno.Text += "     NrRecArqBase" + retConsultaItem.R5001.InfoTotal.NrRecArqBase + " \r\n";
 
                     for (int k = 0; k < retConsultaItem.R5001.CountRTom(); k++)
