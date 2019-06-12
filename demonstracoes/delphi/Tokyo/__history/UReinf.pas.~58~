@@ -105,7 +105,9 @@ var
   _i, _j, _b: integer;
 begin
   mmoXML.Clear;
-  mmoXML.Lines.Add('Consultando eventos');
+  mmoXml.Text := '';
+  mmoXml.Text := 'Consultando eventos';
+  Application.ProcessMessages;
   if rg.ItemIndex = 0 then
   _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text)
   else if rg.ItemIndex = 1 then
@@ -133,9 +135,11 @@ begin
     begin
       mmoXML.Lines.Add('     R5001');
       mmoXML.Lines.Add('      PeriodoApuracao: ' + _RetConsultaItem.R5001.PeriodoApuracao);
-
       mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.IdeContri.NrInsc);
       mmoXML.Lines.Add('      TpInsc: ' + _RetConsultaItem.R5001.IdeContri.TpInsc);
+      mmoXML.Lines.Add('      NrInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.NrInsc);
+      mmoXML.Lines.Add('      NrInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.NrInsc);
+      mmoXML.Lines.Add('      TpInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.TpInsc);
       mmoXML.Lines.Add('      NrRecArqBase: ' + _RetConsultaItem.R5001.InfoTotal.NrRecArqBase);
       for _j := 0 to _RetConsultaItem.R5001.CountRTom - 1 do
       begin
@@ -341,7 +345,7 @@ begin
   cbVersao.Items.Text := Reinf.ListarVersaoManual(#13#10);
   cbAmbiente.ItemIndex := 1;
   cbCertificado.ItemIndex := 0;
-  cbVersao.ItemIndex := 0;
+  cbVersao.ItemIndex := 1;
   edtCnpjSH.Text := '86837822000147';
   edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
   edtEmpregador.Text := '08187168';

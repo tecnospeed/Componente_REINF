@@ -77,9 +77,9 @@ begin
 //  Reinf.ProxyUsuario := '';
 //  Reinf.ProxySenha := '';   Usado na existencia de Proxy na rede.
   if cbAmbiente.Text = '1 - Produção' then
-    Reinf.Ambiente := akProducao;
+    Reinf.Ambiente := 1;
   if cbAmbiente.Text = '2 - Homologação' then
-    Reinf.Ambiente := akPreProducaoReais;
+    Reinf.Ambiente := 2;
   mmoXml.Text := 'Componente Configurado!'  ;
 end;
 
@@ -103,6 +103,7 @@ var
   _RetItemRRecEspetDespR5001: IspdRRecEspetDespR5001;
   _RetItemInfoCRTomR5011: IspdInfoCRTomR5011;
   _i, _j, _b: integer;
+  xml: TStringList;
 begin
   mmoXML.Clear;
   mmoXml.Text := '';
@@ -137,7 +138,6 @@ begin
       mmoXML.Lines.Add('      PeriodoApuracao: ' + _RetConsultaItem.R5001.PeriodoApuracao);
       mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.IdeContri.NrInsc);
       mmoXML.Lines.Add('      TpInsc: ' + _RetConsultaItem.R5001.IdeContri.TpInsc);
-      mmoXML.Lines.Add('      NrInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.NrInsc);
       mmoXML.Lines.Add('      NrInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.NrInsc);
       mmoXML.Lines.Add('      TpInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.TpInsc);
       mmoXML.Lines.Add('      NrRecArqBase: ' + _RetConsultaItem.R5001.InfoTotal.NrRecArqBase);
@@ -213,6 +213,8 @@ begin
 
     if not _RetConsultaItem.R5011.IsEmpty then
     begin
+
+      mmoXML.Lines.Add('  Recibo de autorização: ' + _RetConsultaItem.R5011.NrRecArqBase);
       for _j := 0 to _RetConsultaItem.R5011.CountRTom - 1 do
       begin
         _RetItemRTomR5011 := (_RetConsultaItem.R5011.RTom[_j]);
@@ -290,8 +292,11 @@ begin
     mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrenciaEnvio.Codigo);
     mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrenciaEnvio.Descricao);
   end;
+  xml := TStringList.Create;
   mmoXmlRetorno.Lines.Clear;
   mmoXmlRetorno.Lines.Add(_RetConsulta.XmlRetorno);
+  xml.Text := _RetConsulta.XmlRetorno;
+  xml.SaveToFile('C:\Users\vitor.beal\Desktop\testeDelphi.xml', TEncoding.UTF8);
   mmoXmlEnviado.Lines.Clear;
   mmoXmlEnviado.Lines.Add(_RetConsulta.XmlEnviado);
 end;
@@ -345,11 +350,7 @@ begin
   cbVersao.Items.Text := Reinf.ListarVersaoManual(#13#10);
   cbAmbiente.ItemIndex := 1;
   cbCertificado.ItemIndex := 0;
-  cbVersao.ItemIndex := 1;
-  edtCnpjSH.Text := '86837822000147';
-  edtTokenSH.Text := 'Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI';
-  edtEmpregador.Text := '08187168';
-  rg.ItemIndex := 0;
+  cbVersao.ItemIndex := 0;
 end;
 
 end.

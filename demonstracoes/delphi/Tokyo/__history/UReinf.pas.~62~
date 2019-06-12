@@ -63,6 +63,7 @@ end;
 
 procedure TfrmReinf.btnConfigurarClick(Sender: TObject);
 begin
+  mmoXml.Clear;
   Reinf.ConfigurarSoftwareHouse(edtCnpjSH.Text, edtTokenSH.Text);
   Reinf.CpfCnpjEmpregador := edtEmpregador.Text;
   Reinf.DiretorioEsquemas := edtEsquemas.Text;
@@ -76,9 +77,10 @@ begin
 //  Reinf.ProxyUsuario := '';
 //  Reinf.ProxySenha := '';   Usado na existencia de Proxy na rede.
   if cbAmbiente.Text = '1 - Produção' then
-    Reinf.Ambiente := akProducao;
+    Reinf.Ambiente := 1;
   if cbAmbiente.Text = '2 - Homologação' then
-    Reinf.Ambiente := akPreProducaoReais;
+    Reinf.Ambiente := 2;
+  mmoXml.Text := 'Componente Configurado!'  ;
 end;
 
 procedure TfrmReinf.btnConsultarClick(Sender: TObject);
@@ -102,8 +104,10 @@ var
   _RetItemInfoCRTomR5011: IspdInfoCRTomR5011;
   _i, _j, _b: integer;
 begin
-  mmoXML.Lines.Clear;
-  mmoXML.Lines.Add('Consultando eventos');
+  mmoXML.Clear;
+  mmoXml.Text := '';
+  mmoXml.Text := 'Consultando eventos';
+  Application.ProcessMessages;
   if rg.ItemIndex = 0 then
   _RetConsulta := Reinf.ConsultarLoteEventos(edtIdLote.Text)
   else if rg.ItemIndex = 1 then
@@ -131,9 +135,10 @@ begin
     begin
       mmoXML.Lines.Add('     R5001');
       mmoXML.Lines.Add('      PeriodoApuracao: ' + _RetConsultaItem.R5001.PeriodoApuracao);
-
       mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.IdeContri.NrInsc);
       mmoXML.Lines.Add('      TpInsc: ' + _RetConsultaItem.R5001.IdeContri.TpInsc);
+      mmoXML.Lines.Add('      NrInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.NrInsc);
+      mmoXML.Lines.Add('      TpInsc Estabelecimento: ' + _RetConsultaItem.R5001.IdeEstab.TpInsc);
       mmoXML.Lines.Add('      NrRecArqBase: ' + _RetConsultaItem.R5001.InfoTotal.NrRecArqBase);
       for _j := 0 to _RetConsultaItem.R5001.CountRTom - 1 do
       begin
@@ -207,6 +212,8 @@ begin
 
     if not _RetConsultaItem.R5011.IsEmpty then
     begin
+
+      mmoXML.Lines.Add('  Recibo de autorização: ' + _RetConsultaItem.R5011.NrRecArqBase);
       for _j := 0 to _RetConsultaItem.R5011.CountRTom - 1 do
       begin
         _RetItemRTomR5011 := (_RetConsultaItem.R5011.RTom[_j]);
@@ -294,8 +301,6 @@ procedure TfrmReinf.btnEnviarClick(Sender: TObject);
 var
   _RetEnvio: IspdReinfRetEnviarLoteEventos;
 begin
-  mmoXML.Lines.Clear;
-  mmoXML.Lines.Add('Enviando eventos');
   _RetEnvio := Reinf.EnviarLoteEventos(mmoXML.Text);
   mmoXML.Lines.Clear;
   mmoXML.Lines.Add('### INCLUIR EVENTO ###');
@@ -319,7 +324,7 @@ begin
   mmoXML.Lines.Add('iniValid_13=2018-07');
   mmoXML.Lines.Add('classTrib_16=01');
   mmoXML.Lines.Add('indEscrituracao_17=0');
-  mmoXML.Lines.Add('indDesoneracao_18=1');
+  mmoXML.Lines.Add('indDesoneracao_18=0');
   mmoXML.Lines.Add('indAcordoIsenMulta_19=0');
   mmoXML.Lines.Add('indSitPJ_20=0');
   mmoXML.Lines.Add('nmCtt_22=Nome do Contato');
@@ -336,7 +341,7 @@ end;
 procedure TfrmReinf.FormCreate(Sender: TObject);
 begin
   Reinf := TspdReinfClientX.Create(nil);
-  frmReinf.Caption := 'Reinf - TecnoSpeed - ' + Reinf.Versao;
+  frmReinf.Caption := 'Reinf - TecnoSpeed - OCX ' + Reinf.Versao + ' - TLB ' + ReinfVersaoTLB;
   cbCertificado.Items.Text := Reinf.ListarCertificados(#13#10);
   cbVersao.Items.Text := Reinf.ListarVersaoManual(#13#10);
   cbAmbiente.ItemIndex := 1;
