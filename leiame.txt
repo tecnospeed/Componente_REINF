@@ -1,0 +1,440 @@
+﻿Componente Reinf
+
+Guia de Primeiros Passos:
+   https://atendimento.tecnospeed.com.br/hc/pt-br/sections/360003314314
+
+Dicionário de Dados:
+   https://atendimento.tecnospeed.com.br/hc/pt-br/sections/360002095413
+
+Demonstrações de Uso:
+   https://github.com/tecnospeed/Componente_REINF
+
+==================================== LEIAME VS 3.1.11.126 ===============================================
+
+Novidades:
+
+1) #24438 - Incluindo Tag "loteEventos"
+
+Correções:
+
+1) #24457 - Corrigido propriedade PinCode
+
+==================================== LEIAME VS 2.1.10.120 ===============================================
+
+Novidades:
+
+1) #23929 - Disponibilizados os links para Guia de Primeiros Passos, Dicionário de Dados e Demonstrações de Uso, veja no início deste documento.
+            Atualizado os termos de uso do componente (EULA), sendo possível acessar pelo link http://eula.tecnospeed.com.br
+            Adicionada opção para configurar o path dos fontes do componente no Library Path do Delphi.
+
+Correções:
+
+1) #23068 - Corrigindo versão do resource do OCX.
+
+==================================== LEIAME VS 2.1.9.89 ===============================================
+Correções:
+
+1) #23113 - R-5011 Corrigindo retorno do campo *CNO*
+
+
+====================================  LEIAME VS 2.1.8.58 ================================================
+
+Correções
+
+1) #22885 - R-5001 Corrigindo acesso da propriedade *IdeEstab*.
+      OBS: A propriedade IdeEmp teve o nome alterada para IdeEstab
+
+2) #22037 - Corrigido o grupo RRecRepAD do evento R-5011
+
+3) #22100 - Corrigido nome da versão do Mapeamento do evento R-1070
+
+
+====================================  LEIAME VS 2.1.7.5138 ================================================
+Correções:
+#21694 - Corrigido retorno da consulta do Evento R2099 onde o lote em processamento apresentava status de erro
+
+Novidades:
+1) #21736 Relizadas alterações no componente para compatibilização com a versão 1.4 do Reinf.
+R5001
+Criada interface IspdinfoTotalR5001
+ propriedade:
+ - nrRecArqBase
+
+Criada interface IspdideEstabR5001
+ propriedades:
+ - NrInsc
+ - TpInsc
+
+Criada interface IspdideContriR5001
+ propriedades:
+ - NrInsc
+ - TpInsc
+ 
+IspdRTomR5001 criada propriedade CNO
+
+Os campos  NrInsc e TpInsc  de IspdReinfRetConsultarLoteItem.R5001 foram motivos para a IspdideContriR5001
+O campo nrRecArqBase de IspdReinfRetConsultarLoteItem.R5001 Foi  motivos para a IspdinfoTotalR5001
+
+R5011
+IspdRTomR5011 criada propriedade CNO
+
+IspdRrecRepADR5011 removida as propriedades:
+ - cnpjAssocDesp
+ - vlrTotalRep
+
+
+
+
+
+====================================  LEIAME VS 2.1.6.3793 ================================================
+Novidades:
+
+1) #21350 - Criado o método ConsultarIdEvento(aIdEvento) que serve para consultar um lote com o Id do evento 
+e método ConsultarEventoPorRecibo(aNumeroRecibo) que consulta o evento pelo número do recibo. Para ambos  retorno é igual ao ConsultarLoteEventos
+
+====================================  LEIAME VS 3.1.11.126 ================================================
+Novidades:
+	************************************ A T E N Ç Ã O ************************************
+	As alterações abaixo devem ser implementadas para que seja possível o uso do componente.
+
+1) #20478 -Criado o método "ListarVersaoManual(aDelimitador)" que retorna a listagem das versões manuais disponíveis. 
+Ao instanciar o componente será setado automaticamente a versão vigente.
+NOTA: A propriedade "VersaoManual" que era tipada "TVersaoManualKind" (vm22,vm23, vm24) como número inteiro passa a ser do tipo texto "String".
+
+Exemplo em Delphi:
+  _ListaVersaoManual := TStringList.Create;
+  _ListaVersaoManual.Text := FReinf.ListarVersaoManual(#13#10);
+  FReinf.VersaoManual := _ListaVersaoManual[aIndiceDaVersao]
+
+
+2) #21065 - Alterações na Interface de comunicação.É obrigatório alterar a implementação de uso do componente.
+	Segue o post com mais informações:
+	http://tsdn.tecnospeed.com.br/base-de-conhecimento/post/componente-efd-reinf-alteracoes-na-interface-de-comunicacao
+
+Correções:
+
+1) #21227 - Corrigido propriedade "IsEmpty" nos atributos 5001 e 5011.
+
+====================================  LEIAME VS 1.0.4.1964 ================================================
+Novidades:
+
+Delphi:
+1)#20820 - Criada constante ReinfVersaoTLB (versão de compilação).
+
+2)#20634 - Adicionada propriedade "IsEmpty" nos atributos 5001 e 5011.
+
+====================================  LEIAME VS $1.0.3.1314 ================================================
+Novidades:
+
+1)#20551 - Compatibilza Reinf com a versão 1.3.02 
+	 - Implementado o retorno do evento "R-5001 - Informações de bases e tributos por evento".
+	   Retornado na consulta dos eventos ['2010', '2020', '2040', '2050', '2060', '3010']
+	 - Corrigido o nome do evento de totalizador de R2099 para R5011
+	   Exemplo da consulta completa em Delphi:
+        procedure Consultar();
+        var 
+        _RetConsulta: IspdRetConsultarLote;
+        _RetConsultaItem: IspdRetConsultarLoteItem;
+        _RetConsultaOcorrencia: IspdRetConsultarLoteOcorrencia;
+        _RetItemRTomR5011: IspdRTomR5011;
+        _RetItemRComlR5011: IspdRComlR5011;
+        _RetItemRCPRBR5011: IspdRCPRBR5011;
+        _RetItemRPrestR5011: IspdRPrestR5011;
+        _RetItemRRecRepADR5011: IspdRRecRepADR5011;
+        _RetItemRTomR5001: IspdRTomR5001;
+        _RetItemRComlR5001: IspdRComlR5001;
+        _RetItemRCPRBR5001: IspdRCPRBR5001;
+        _RetItemRPrestR5001: IspdRPrestR5001;
+        _RetItemRRecRepADR5001: IspdRRecRepADR5001;
+        _RetItemInfoCRTomR5001: IspdInfoCRTomR5001;
+        _RetItemRRecEspetDespR5001: IspdRRecEspetDespR5001;
+
+        _i, _j, _b: integer;
+        begin
+        _RetConsulta := FReinf.ConsultarLoteEventos(edtIdentificadorLote.Text);
+
+        mmoXML.Lines.Clear;
+        mmoXML.Lines.Add('### CONSULTA PROTOCOLO ###');
+        mmoXML.Lines.Add('Número do Protocolo: ' + _RetConsulta.NumeroProtocolo);
+        mmoXML.Lines.Add('Mensagem de Retorno: ' + _RetConsulta.Mensagem);
+        mmoXML.Lines.Add('Status do Lote: ' + _RetConsulta.Status);
+
+        for _i := 0 to _RetConsulta.Count - 1 do
+        begin
+            _RetConsultaItem := _RetConsulta.Eventos[_i];
+            mmoXML.Lines.Add('    Evento: ' + IntToStr(_i + 1));
+            mmoXML.Lines.Add('    Id Evento: ' + _RetConsultaItem.IdEvento);
+            mmoXML.Lines.Add('    Número Recibo: ' + _RetConsultaItem.NumeroRecibo);
+            mmoXML.Lines.Add('    Código de Status: ' + _RetConsultaItem.cStat);
+            mmoXML.Lines.Add('    Mensagem: ' + _RetConsultaItem.Mensagem);
+            mmoXML.Lines.Add('    Status do Evento: ' + _RetConsultaItem.Status);
+
+            mmoXML.Lines.Add('     R5001');
+            mmoXML.Lines.Add('      PeriodoApuracao: ' + _RetConsultaItem.R5001.PeriodoApuracao);
+            mmoXML.Lines.Add('      NrInsc: ' + _RetConsultaItem.R5001.NrInsc);
+            mmoXML.Lines.Add('      TpInsc: ' + _RetConsultaItem.R5001.TpInsc);
+            mmoXML.Lines.Add('      NrRecArqBase: ' + _RetConsultaItem.R5001.NrRecArqBase);
+
+            for _j := 0 to _RetConsultaItem.R5001.CountRTom - 1 do
+            begin
+            _RetItemRTomR5001 := (_RetConsultaItem.R5001.RTom[_j]);
+            mmoXML.Lines.Add('      RTom:  ');
+            mmoXML.Lines.Add('      CnpjPrestador: ' + _RetItemRTomR5001.CnpjPrestador);
+            mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemRTomR5001.VlrTotalBaseRet);
+            for _b := 0 to _RetItemRTomR5001.CountInfoCRTom - 1 do
+            begin
+                _RetItemInfoCRTomR5001 := _RetItemRTomR5001.InfoCRTom[_b];
+                mmoXML.Lines.Add('       InfoCRTOM: ');
+                mmoXML.Lines.Add('        CRTom: ' + _RetItemInfoCRTomR5001.CRTom);
+                mmoXML.Lines.Add('        VlrCRTom: ' + _RetItemInfoCRTomR5001.VlrCRTom);
+                mmoXML.Lines.Add('        VlrCRTomSusp: ' + _RetItemInfoCRTomR5001.VlrCRTomSusp);
+            end;
+
+            end;
+            for _j := 0 to _RetConsultaItem.R5001.CountRComl - 1 do
+            begin
+            _RetItemRComlR5001 := (_RetConsultaItem.R5001.RComl[_j]);
+            mmoXML.Lines.Add('      RComl:  ');
+            mmoXML.Lines.Add('      CRComl: ' + _RetItemRComlR5001.CRComl);
+            mmoXML.Lines.Add('      VlrCRComl: ' + _RetItemRComlR5001.VlrCRComl);
+            mmoXML.Lines.Add('      VlrCRComlSusp: ' + _RetItemRComlR5001.VlrCRComlSusp);
+
+            end;
+            for _j := 0 to _RetConsultaItem.R5001.CountRCPRB - 1 do
+            begin
+            _RetItemRCPRBR5001 := (_RetConsultaItem.R5001.RCPRB[_j]);
+            mmoXML.Lines.Add('      RCPRB:  ');
+            mmoXML.Lines.Add('      CRCPRB: ' + _RetItemRCPRBR5001.CRCPRB);
+            mmoXML.Lines.Add('      VlrCRCPRB: ' + _RetItemRCPRBR5001.VlrCRCPRB);
+            mmoXML.Lines.Add('      VlrCRCPRBSusp: ' + _RetItemRCPRBR5001.VlrCRCPRBSusp);
+            end;
+
+            for _j := 0 to _RetConsultaItem.R5001.CountRPrest - 1 do
+            begin
+            _RetItemRPrestR5001 := (_RetConsultaItem.R5001.RPrest[_j]);
+            mmoXML.Lines.Add('      RPrest:  ');
+            mmoXML.Lines.Add('      TpInscTomador: ' + _RetItemRPrestR5001.TpInscTomador);
+            mmoXML.Lines.Add('      NrInscTomador: ' + _RetItemRPrestR5001.NrInscTomador);
+            mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemRPrestR5001.VlrTotalBaseRet);
+            mmoXML.Lines.Add('      VlrTotalRetAdic: ' + _RetItemRPrestR5001.VlrTotalRetAdic);
+            mmoXML.Lines.Add('      VlrTotalNRetPrinc: ' + _RetItemRPrestR5001.VlrTotalNRetPrinc);
+            mmoXML.Lines.Add('      VlrTotalNRetAdic: ' + _RetItemRPrestR5001.VlrTotalNRetAdic);
+            mmoXML.Lines.Add('      VlrTotalRetPrinc: ' + _RetItemRPrestR5001.VlrTotalRetPrinc);
+
+            end;
+            for _j := 0 to _RetConsultaItem.R5001.CountRRecRepAD - 1 do
+            begin
+            _RetItemRRecRepADR5001 := (_RetConsultaItem.R5001.RRecRepAD[_j]);
+            mmoXML.Lines.Add('      RRecRepAD:  ');
+            mmoXML.Lines.Add('      CnpjAssocDesp: ' + _RetItemRRecRepADR5001.CnpjAssocDesp);
+            mmoXML.Lines.Add('      VlrTotalRep: ' + _RetItemRRecRepADR5001.VlrTotalRep);
+            mmoXML.Lines.Add('      CRRecRepAD: ' + _RetItemRRecRepADR5001.CRRecRepAD);
+            mmoXML.Lines.Add('      VlrCRRecRepAD: ' + _RetItemRRecRepADR5001.VlrCRRecRepAD);
+            mmoXML.Lines.Add('      VlrCRRecRepADSusp: ' + _RetItemRRecRepADR5001.VlrCRRecRepADSusp);
+            end;
+
+            for _j := 0 to _RetConsultaItem.R5001.CountRRecEspetDesp - 1 do
+            begin
+            _RetItemRRecEspetDespR5001 := (_RetConsultaItem.R5001.RRecEspetDesp[_j]);
+            mmoXML.Lines.Add('      RRecEspetDesp:  ');
+            mmoXML.Lines.Add('      CRRecEspetDesp: ' + _RetItemRRecEspetDespR5001.CRRecEspetDesp);
+            mmoXML.Lines.Add('      VlrReceitaTotal: ' + _RetItemRRecEspetDespR5001.VlrReceitaTotal);
+            mmoXML.Lines.Add('      VlrCRRecEspetDesp: ' + _RetItemRRecEspetDespR5001.VlrCRRecEspetDesp);
+            mmoXML.Lines.Add('      VlrCRRecEspetDespSusp: ' +
+                _RetItemRRecEspetDespR5001.VlrCRRecEspetDespSusp);
+            end;
+
+            mmoXML.Lines.Add(sLineBreak);
+            mmoXML.Lines.Add(sLineBreak);
+            for _j := 0 to _RetConsultaItem.R5011.CountRTom - 1 do
+            begin
+            _RetItemRTomR5011 := (_RetConsultaItem.R5011.RTom[_j]);
+            mmoXML.Lines.Add('      R5011 ');
+            mmoXML.Lines.Add('      RTom:  ');
+            mmoXML.Lines.Add('      CnpjPrestador: ' + _RetItemRTomR5011.CnpjPrestador);
+            mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemRTomR5011.VlrTotalBaseRet);
+	    for _b := 0 to _RetItemRTomR5011.CountInfoCRTom - 1 do
+            begin
+                _RetItemInfoCRTomR5011 := _RetItemRTomR5011.InfoCRTom[_b];
+                mmoXML.Lines.Add('       InfoCRTOM: ');
+                mmoXML.Lines.Add('        CRTom: ' + _RetItemInfoCRTomR5011.CRTom);
+                mmoXML.Lines.Add('        VlrCRTom: ' + _RetItemInfoCRTomR5011.VlrCRTom);
+                mmoXML.Lines.Add('        VlrCRTomSusp: ' + _RetItemInfoCRTomR5011.VlrCRTomSusp);
+            end;			         
+
+            end;
+            for _j := 0 to _RetConsultaItem.R5011.CountRComl - 1 do
+            begin
+            _RetItemRComlR5011 := (_RetConsultaItem.R5011.RComl[_j]);
+            mmoXML.Lines.Add('      R5011 ');
+            mmoXML.Lines.Add('      RComl:  ');
+            mmoXML.Lines.Add('      VlrCPApur: ' + _RetItemRComlR5011.VlrCPApur);
+            mmoXML.Lines.Add('      VlrRatApur: ' + _RetItemRComlR5011.VlrRatApur);
+            mmoXML.Lines.Add('      VlrSenarApur: ' + _RetItemRComlR5011.VlrSenarApur);
+            mmoXML.Lines.Add('      VlrCPSusp: ' + _RetItemRComlR5011.VlrCPSusp);
+            mmoXML.Lines.Add('      VlrRatSusp: ' + _RetItemRComlR5011.VlrRatSusp);
+            mmoXML.Lines.Add('      VlrSenarSusp: ' + _RetItemRComlR5011.VlrSenarSusp);
+            end;
+            for _j := 0 to _RetConsultaItem.R5011.CountRCPRB - 1 do
+            begin
+            _RetItemRCPRBR5011 := (_RetConsultaItem.R5011.RCPRB[_j]);
+            mmoXML.Lines.Add('      R5011 ');
+            mmoXML.Lines.Add('      RCPRB:  ');
+            mmoXML.Lines.Add('      CodRec: ' + _RetItemRCPRBR5011.CodRec);
+            mmoXML.Lines.Add('      VlrCPApurTotal: ' + _RetItemRCPRBR5011.VlrCPApurTotal);
+            mmoXML.Lines.Add('      VlrCPRBSusp: ' + _RetItemRCPRBR5011.VlrCPRBSusp);
+            end;
+            for _j := 0 to _RetConsultaItem.R5011.CountRCPRB - 1 do
+            begin
+            _RetItemRCPRBR5011 := (_RetConsultaItem.R5011.RCPRB[_j]);
+            mmoXML.Lines.Add('      R5011 ');
+            mmoXML.Lines.Add('      RCPRB:  ');
+            mmoXML.Lines.Add('      CodRec: ' + _RetItemRCPRBR5011.CodRec);
+            mmoXML.Lines.Add('      VlrCPApurTotal: ' + _RetItemRCPRBR5011.VlrCPApurTotal);
+            mmoXML.Lines.Add('      VlrCPRBSusp: ' + _RetItemRCPRBR5011.VlrCPRBSusp);
+            end;
+            for _j := 0 to _RetConsultaItem.R5011.CountRPrest - 1 do
+            begin
+            _RetItemRPrestR5011 := (_RetConsultaItem.R5011.RPrest[_j]);
+            mmoXML.Lines.Add('      R5011 ');
+            mmoXML.Lines.Add('      RPrest:  ');
+            mmoXML.Lines.Add('      TpInscTomador: ' + _RetItemRPrestR5011.TpInscTomador);
+            mmoXML.Lines.Add('      NrInscTomador: ' + _RetItemRPrestR5011.NrInscTomador);
+            mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemRPrestR5011.VlrTotalBaseRet);
+            mmoXML.Lines.Add('      VlrTotalRetAdic: ' + _RetItemRPrestR5011.VlrTotalRetAdic);
+            mmoXML.Lines.Add('      VlrTotalNRetPrinc: ' + _RetItemRPrestR5011.VlrTotalNRetPrinc);
+            mmoXML.Lines.Add('      VlrTotalNRetAdic: ' + _RetItemRPrestR5011.VlrTotalNRetAdic);
+            mmoXML.Lines.Add('      VlrTotalRetPrinc: ' + _RetItemRPrestR5011.VlrTotalRetPrinc);
+
+            end;
+            for _j := 0 to _RetConsultaItem.R5011.CountRRecRepAD - 1 do
+            begin
+            _RetItemRRecRepADR5011 := (_RetConsultaItem.R5011.RRecRepAD[_j]);
+            mmoXML.Lines.Add('      R5011 ');
+            mmoXML.Lines.Add('      RRecRepAD:  ');
+            mmoXML.Lines.Add('      CnpjAssocDesp: ' + _RetItemRRecRepADR5011.CnpjAssocDesp);
+            mmoXML.Lines.Add('      VlrTotalRep: ' + _RetItemRRecRepADR5011.VlrTotalRep);
+            mmoXML.Lines.Add('      VlrTotalRet: ' + _RetItemRRecRepADR5011.VlrTotalRet);
+            mmoXML.Lines.Add('      VlrTotalNRet: ' + _RetItemRRecRepADR5011.VlrTotalNRet);
+            end;
+
+            for _j := 0 to _RetConsultaItem.Count - 1 do
+            begin
+            _RetConsultaOcorrencia := _RetConsultaItem.Ocorrencias[_j];
+            mmoXML.Lines.Add('        Ocorrencia: ' + IntToStr(_j + 1));
+            mmoXML.Lines.Add('        Código: ' + _RetConsultaOcorrencia.Codigo);
+            mmoXML.Lines.Add('        Descrição: ' + _RetConsultaOcorrencia.Descricao);
+            end;
+        end;
+        end;
+
+====================================  LEIAME VS 1.0.1.59541 ================================================
+Novidades:
+
+1) #20107 - Adicionadas as propriedades para configuração do certicado:
+              FReinf.CaminhoCertificado = 'C:\meucertificado.pfx';
+              FReinf.SenhaCertificado = 'MinhaSenha';
+    
+            Adicionado método que retorna a data de expiração do certificado:
+              FReinf.GetVencimentoCertificado;    
+
+2) #20216 - Compatibilizado componente com a consulta de totalização - Evento R5011
+	Exemplo em Delphi:
+    	Novas Interfaces:
+	_RetItemR2099RTom: IspdR2099RTom;
+	_RetItemR2099RComl: IspdR2099RComl;
+        _RetItemR2099RCPRB: IspdR2099RCPRB;
+        _RetItemR2099RPrest: IspdR2099RPrest;
+        _RetItemR2099RRecRepAD: IspdR2099RRecRepAD;
+
+ for _j := 0 to _RetConsultaItem.R2099.CountRTom - 1 do
+    begin
+      _RetItemR2099RTom := (_RetConsultaItem.R2099.RTom[_j]);
+      mmoXML.Lines.Add('      R2099 ');
+      mmoXML.Lines.Add('      RTom:  ');
+      mmoXML.Lines.Add('      CnpjPrestador: ' + _RetItemR2099RTom.CnpjPrestador);
+      mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemR2099RTom.VlrTotalBaseRet);
+      mmoXML.Lines.Add('      VlrTotalRetPrinc: ' + _RetItemR2099RTom.VlrTotalRetPrinc);
+      mmoXML.Lines.Add('      VlrTotalRetAdic: ' + _RetItemR2099RTom.VlrTotalRetAdic);
+      mmoXML.Lines.Add('      VlrTotalNRetPrinc: ' + _RetItemR2099RTom.VlrTotalNRetPrinc);
+      mmoXML.Lines.Add('      VlrTotalNRetAdic: ' + _RetItemR2099RTom.VlrTotalNRetAdic);
+    end;
+    for _j := 0 to _RetConsultaItem.R2099.CountRComl - 1 do
+    begin
+      _RetItemR2099RComl := (_RetConsultaItem.R2099.RComl[_j]);
+      mmoXML.Lines.Add('      R2099 ');
+      mmoXML.Lines.Add('      RComl:  ');
+      mmoXML.Lines.Add('      VlrCPApur: ' + _RetItemR2099RComl.VlrCPApur);
+      mmoXML.Lines.Add('      VlrRatApur: ' + _RetItemR2099RComl.VlrRatApur);
+      mmoXML.Lines.Add('      VlrSenarApur: ' + _RetItemR2099RComl.VlrSenarApur);
+      mmoXML.Lines.Add('      VlrCPSusp: ' + _RetItemR2099RComl.VlrCPSusp);
+      mmoXML.Lines.Add('      VlrRatSusp: ' + _RetItemR2099RComl.VlrRatSusp);
+      mmoXML.Lines.Add('      VlrSenarSusp: ' + _RetItemR2099RComl.VlrSenarSusp);
+    end;
+    for _j := 0 to _RetConsultaItem.R2099.CountRCPRB - 1 do
+    begin
+      _RetItemR2099RCPRB := (_RetConsultaItem.R2099.RCPRB[_j]);
+      mmoXML.Lines.Add('      R2099 ');
+      mmoXML.Lines.Add('      RCPRB:  ');
+      mmoXML.Lines.Add('      CodRec: ' + _RetItemR2099RCPRB.CodRec);
+      mmoXML.Lines.Add('      VlrCPApurTotal: ' + _RetItemR2099RCPRB.VlrCPApurTotal);
+      mmoXML.Lines.Add('      VlrCPRBSusp: ' + _RetItemR2099RCPRB.VlrCPRBSusp);
+    end;
+    for _j := 0 to _RetConsultaItem.R2099.CountRCPRB - 1 do
+    begin
+      _RetItemR2099RCPRB := (_RetConsultaItem.R2099.RCPRB[_j]);
+      mmoXML.Lines.Add('      R2099 ');
+      mmoXML.Lines.Add('      RCPRB:  ');
+      mmoXML.Lines.Add('      CodRec: ' + _RetItemR2099RCPRB.CodRec);
+      mmoXML.Lines.Add('      VlrCPApurTotal: ' + _RetItemR2099RCPRB.VlrCPApurTotal);
+      mmoXML.Lines.Add('      VlrCPRBSusp: ' + _RetItemR2099RCPRB.VlrCPRBSusp);
+    end;
+    for _j := 0 to _RetConsultaItem.R2099.CountRPrest - 1 do
+    begin
+      _RetItemR2099RPrest := (_RetConsultaItem.R2099.RPrest[_j]);
+      mmoXML.Lines.Add('      R2099 ');
+      mmoXML.Lines.Add('      RPrest:  ');
+      mmoXML.Lines.Add('      TpInscTomador: ' + _RetItemR2099RPrest.TpInscTomador);
+      mmoXML.Lines.Add('      NrInscTomador: ' + _RetItemR2099RPrest.NrInscTomador);
+      mmoXML.Lines.Add('      VlrTotalBaseRet: ' + _RetItemR2099RPrest.VlrTotalBaseRet);
+      mmoXML.Lines.Add('      VlrTotalRetAdic: ' + _RetItemR2099RPrest.VlrTotalRetAdic);
+      mmoXML.Lines.Add('      VlrTotalNRetPrinc: ' + _RetItemR2099RPrest.VlrTotalNRetPrinc);
+      mmoXML.Lines.Add('      VlrTotalNRetAdic: ' + _RetItemR2099RPrest.VlrTotalNRetAdic);
+      mmoXML.Lines.Add('      VlrTotalRetPrinc: ' + _RetItemR2099RPrest.VlrTotalRetPrinc);
+
+    end;
+    for _j := 0 to _RetConsultaItem.R2099.CountRRecRepAD - 1 do
+    begin
+      _RetItemR2099RRecRepAD := (_RetConsultaItem.R2099.RRecRepAD[_j]);
+      mmoXML.Lines.Add('      R2099 ');
+      mmoXML.Lines.Add('      RRecRepAD:  ');
+      mmoXML.Lines.Add('      CnpjAssocDesp: ' + _RetItemR2099RRecRepAD.CnpjAssocDesp);
+      mmoXML.Lines.Add('      VlrTotalRep: ' + _RetItemR2099RRecRepAD.VlrTotalRep);
+      mmoXML.Lines.Add('      VlrTotalRet: ' + _RetItemR2099RRecRepAD.VlrTotalRet);
+      mmoXML.Lines.Add('      VlrTotalNRet: ' + _RetItemR2099RRecRepAD.VlrTotalNRet);
+    end;
+
+====================================  LEIAME VS 1.0.1.64503 ================================================
+
+1) #19407 - Adicionadas propriedadas para a configuração de serviço Proxy.
+          ...
+          FReinf.ProxyServidor := '192.168.1.1:80';
+          FReinf.ProxyUsuario := 'Usuario';
+          FReinf.ProxySenha := 'SenhaBoa';
+          ...
+          Obs: Importante preencher a propriedade ProxyServidor com a Porta.
+
+2) #19723 - Corrigida a propriedade Versão, agora traz a versão corretamente conforme a versão descrita no instalador.
+
+3) #19921 - Compatibilizado com a versão 1.3.
+
+4) #19945 - Compatibilizado componente com Delphi 10.2 Tokyo.
+
+5) #20016 - Corrigido diretório que grava log de erro. 
+
+6) #20025 - Melhoria na configuração de proxy.
+
+
+====================================  LEIAME VS 1.0.1.62207 ===============================================
+
+Liberada primeira versão oficial do Componente Reinf.
