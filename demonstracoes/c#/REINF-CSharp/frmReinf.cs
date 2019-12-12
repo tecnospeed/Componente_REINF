@@ -164,7 +164,7 @@ namespace REINF_CSharp
             tbRetorno.Text += "Número do Protocolo: " + retConsulta.NumeroProtocolo + "\r\n";
             tbRetorno.Text += "Mensagem do Retorno: " + retConsulta.Mensagem + "\r\n";
             tbRetorno.Text += "Status do Lote: " + retConsulta.Status + "\r\n";
-
+            tbRetorno.Text += "Id do Lote: " + retConsulta.Id + "\r\n";
             for (int i = 0; i < retConsulta.Count() ; i++)
             {
                 retConsultaItem = retConsulta.Eventos[i];

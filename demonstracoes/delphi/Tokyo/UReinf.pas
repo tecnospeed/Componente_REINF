@@ -120,6 +120,7 @@ begin
   mmoXML.Lines.Add('Número do Protocolo: ' + _RetConsulta.NumeroProtocolo);
   mmoXML.Lines.Add('Mensagem de Retorno: ' + _RetConsulta.Mensagem);
   mmoXML.Lines.Add('Status do Lote: ' + _RetConsulta.Status);
+  mmoXML.Lines.Add('Id do Lote: ' + _RetConsulta.Id);
 
   for _i := 0 to _RetConsulta.Count - 1 do
   begin

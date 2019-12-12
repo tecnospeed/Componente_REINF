@@ -93,6 +93,7 @@
 	response.Write("Numero do Protocolo: " & Consultar.NumeroProtocolo) %> <br> <%
   	response.Write("Mensagem de Retorno: " & Consultar.Mensagem) %> <br> <%
   	response.Write("Status do Lote: " & Consultar.Status) %> <br> <%
+	response.Write("Id do Lote: " & Consultar.Id) %> <br> <%
 	XmlRetorno = Consultar.XmlRetorno
 
 	Dim objeto3, gravaArquivo3, sArquivo3
