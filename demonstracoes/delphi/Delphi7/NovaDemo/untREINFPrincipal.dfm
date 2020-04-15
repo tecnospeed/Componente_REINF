@@ -408,7 +408,6 @@ object frmReinfPrincipal: TfrmReinfPrincipal
             Width = 489
             Height = 152
             Align = alClient
-            ReadOnly = True
             TabOrder = 0
           end
         end
@@ -426,7 +425,6 @@ object frmReinfPrincipal: TfrmReinfPrincipal
             Width = 489
             Height = 147
             Align = alClient
-            ReadOnly = True
             TabOrder = 0
           end
         end

@@ -102,11 +102,6 @@ type
     { Public declarations }
     vReinf      : TspdReinfClientX;
     vArquivoIni : TIniFile;
-    vPreenchido : Boolean;
-    vTX2OK      : Boolean;
-    vXMLOK      : Boolean;
-    vAssinado   : Boolean;
-    vEnviado    : Boolean;
   end;
 
 var
@@ -145,12 +140,6 @@ end;
 
 procedure TfrmReinfPrincipal.Limpar;
 begin
-  vPreenchido := False;
-  vTX2OK      := False;
-  vXMLOK      := False;
-  vAssinado   := False;
-  vEnviado    := False;
-
   edtIDLote.Text := '';
 
   mmTX2.Lines.Clear;
@@ -182,7 +171,6 @@ end;
 
 procedure TfrmReinfPrincipal.sbPreencherCompClick(Sender: TObject);
 begin
-  vPreenchido := False;
   try
     vReinf.ConfigurarSoftwareHouse(edtCNPJ.Text, edtTOKEN.Text);
     vReinf.CpfCnpjEmpregador  := Copy(edtCNPJEmpregador.Text,0,8);//BASE cnpj válido. Utilizado na geração do ID único do componente
@@ -209,7 +197,6 @@ begin
 }
     ShowMessage('Configurado com sucesso.');
 
-    vPreenchido := True;
   except
     on e : exception do
      showmessage('Ocorreu o seguinte erro: '+ e.message);
@@ -263,7 +250,6 @@ begin
 
     pcProcessos.ActivePage := tsTX2;
   finally
-    vTX2OK := True;
   end;
 end;
 
@@ -273,7 +259,6 @@ begin
     mmXml.Text := vReinf.GerarXMLporTx2(mmTX2.Text);
 
     pcProcessos.ActivePage := tsXML;
-    vXMLOK := True;
   except
     on e : exception do
      showmessage('Ocorreu o seguinte erro: '+ e.message);
@@ -287,7 +272,6 @@ begin
     mmXMLAssinado.Text := vReinf.AssinarEvento(mmXml.Text);
 
     pcProcessos.ActivePage := tsXML;
-    vAssinado := True;
   except
     on e : exception do
      showmessage('Ocorreu o seguinte erro: '+ e.message);
@@ -307,7 +291,6 @@ begin
 
     edtIDLote.Text := vRetEnvio.IdLote;
     pcProcessos.ActivePage := tsEnvio;
-    vEnviado := True;
 
     ShowMessage('Envio feito com sucesso, favor executar a consulta!');
 
