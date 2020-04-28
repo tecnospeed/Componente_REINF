@@ -640,6 +640,7 @@ begin
   if Application.MessageBox('Efetuar a limpeza de todo o ambiente de homologação no servidor do Reinf?','Stop',mb_yesno + mb_iconquestion) = id_yes then
   begin
     sbPreencherCompClick(Owner);
+    vReinf.Ambiente := akPreProducaoReais;
 
     PreencherTX2('RemoverContribuinte', '00');
 

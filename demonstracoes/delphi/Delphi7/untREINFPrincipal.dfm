@@ -368,7 +368,7 @@ object frmReinfPrincipal: TfrmReinfPrincipal
       Top = 56
       Width = 501
       Height = 361
-      ActivePage = tsTX2
+      ActivePage = tsXMLRetornado
       Align = alClient
       TabOrder = 1
       object tsTX2: TTabSheet
