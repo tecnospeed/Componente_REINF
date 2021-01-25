@@ -10,45 +10,12 @@ uses
 type
   TfrmReinfPrincipal = class(TForm)
     Panel2: TPanel;
-    GroupBox2: TGroupBox;
-    Label4: TLabel;
-    Label5: TLabel;
-    edtDirTemplates: TEdit;
-    edtDirEsquemas: TEdit;
-    GroupBox1: TGroupBox;
-    Label1: TLabel;
-    Label2: TLabel;
-    edtCNPJ: TEdit;
-    edtToken: TEdit;
-    Panel1: TPanel;
-    GroupBox4: TGroupBox;
-    edtIDLote: TEdit;
-    Panel4: TPanel;
-    Panel3: TPanel;
-    sbPreencherComp: TSpeedButton;
-    sbGerarXML: TSpeedButton;
     pcProcessos: TPageControl;
-    sbGerarTX2: TSpeedButton;
     tsTX2: TTabSheet;
     GroupBox5: TGroupBox;
-    mmTX2: TMemo;
-    sbAssinar: TSpeedButton;
     tsXML: TTabSheet;
     GroupBox6: TGroupBox;
     mmXML: TMemo;
-    sbEnviar: TSpeedButton;
-    edtCNPJEmpregador: TEdit;
-    Label3: TLabel;
-    sbLimpar: TSpeedButton;
-    Panel5: TPanel;
-    GroupBox9: TGroupBox;
-    cbCertificado: TComboBox;
-    lbl1: TLabel;
-    Ambiente: TLabel;
-    cbAmbiente: TComboBox;
-    lbl2: TLabel;
-    cbVersao: TComboBox;
-    Label6: TLabel;
     GroupBox3: TGroupBox;
     mmXMLAssinado: TMemo;
     tsEnvio: TTabSheet;
@@ -56,17 +23,13 @@ type
     mmEnvio: TMemo;
     tsConsulta: TTabSheet;
     GroupBox10: TGroupBox;
-    sbConsultaLote: TSpeedButton;
     mmConsulta: TMemo;
-    sbConsultarEvento: TSpeedButton;
-    sbConsultarRecibo: TSpeedButton;
     tsXMLEnviado: TTabSheet;
+    GroupBox11: TGroupBox;
+    mmXMLEnvio: TMemo;
     tsXMLRetornado: TTabSheet;
     GroupBox8: TGroupBox;
     mmXMLRetorno: TMemo;
-    GroupBox11: TGroupBox;
-    mmXMLEnvio: TMemo;
-    sbExcluir: TSpeedButton;
     tsExclusao: TTabSheet;
     GroupBox12: TGroupBox;
     mmTX2Exclusao: TMemo;
@@ -74,7 +37,40 @@ type
     mmXMLExclusao: TMemo;
     GroupBox14: TGroupBox;
     mmRetornoExclusao: TMemo;
+    mmTX2: TMemo;
+    Panel5: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    GroupBox9: TGroupBox;
+    GroupBox1: TGroupBox;
+    lbl1: TLabel;
+    sbPreencherComp: TSpeedButton;
+    sbGerarXML: TSpeedButton;
+    sbGerarTX2: TSpeedButton;
+    sbAssinar: TSpeedButton;
+    sbEnviar: TSpeedButton;
+    sbExcluir: TSpeedButton;
+    sbConsultaLote: TSpeedButton;
+    sbConsultarEvento: TSpeedButton;
+    sbConsultarRecibo: TSpeedButton;
+    cbCertificado: TComboBox;
+    edtCNPJ: TEdit;
+    edtToken: TEdit;
+    lbl2: TLabel;
+    cbVersao: TComboBox;
+    Ambiente: TLabel;
+    cbAmbiente: TComboBox;
+    Label4: TLabel;
+    edtDirTemplates: TEdit;
+    Label5: TLabel;
+    edtDirEsquemas: TEdit;
+    edtCNPJEmpregador: TEdit;
+    Label3: TLabel;
     SpeedButton1: TSpeedButton;
+    sbLimpar: TSpeedButton;
+    edtIDLote: TEdit;
+    Label7: TLabel;
+    Label6: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbPreencherCompClick(Sender: TObject);
@@ -101,7 +97,6 @@ type
   public
     { Public declarations }
     vReinf      : TspdReinfClientX;
-    vArquivoIni : TIniFile;
   end;
 
 var
@@ -121,13 +116,6 @@ implementation
 
 procedure TfrmReinfPrincipal.CarregarDadosReinf;
 begin
-  edtCNPJ.Text             := vArquivoIni.ReadString('PRINCIPAL','CNPJSH','');
-  edtTOKEN.Text            := vArquivoIni.ReadString('PRINCIPAL','TOKENSH','');
-  edtCNPJEmpregador.Text   := vArquivoIni.ReadString('PRINCIPAL','CNPJEMISSOR','');
-
-  edtDirTemplates.Text     := vArquivoIni.ReadString('DIRETORIOS','TEMPLATES','');
-  edtDirEsquemas.Text      := vArquivoIni.ReadString('DIRETORIOS','ESQUEMAS','');
-
   cbCertificado.Items.Text := vReinf.ListarCertificados(#13#10);
 {
   Quando o ListarCertificados não trouxer nada, verificar se o certificado foi instalado por maquina ou por usuário
@@ -159,7 +147,6 @@ end;
 procedure TfrmReinfPrincipal.FormCreate(Sender: TObject);
 begin
   vReinf        := TspdReinfClientX.Create(nil);
-  vArquivoIni   := TIniFile.Create(ChangeFileExt(Application.ExeName,'.ini'));
 
   frmReinfPrincipal.Caption := 'Demonstração Reinf v.' + vReinf.Versao + ' - TecnoSpeed';
 end;
