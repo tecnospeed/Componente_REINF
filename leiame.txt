@@ -9,6 +9,30 @@ Dicionário de Dados:
 Demonstrações de Uso:
    https://github.com/tecnospeed/Componente_REINF
 
+==================================== 4.1.13.163 ===============================================
+Correções:
+
+1) #DC-2954 - Implementada a correção no retorno tipado do evento R5001 no campo RPrest, agora esse campo pode ser
+              um Array.
+
+==================================== 4.1.12.146 ===============================================
+Novidades:
+
+1) # - Nova arquitetura da gov exclusiva por produto.
+
+2) # - Compatibilizado o componente com o novo Delphi 10.4 Sydney.
+
+3) #DC-2208 - Compatibilizado componente com o novo Layout 1.5.01 (Até NT 01/2021).
+              Atenção! A SEFAZ está com instabilidade no webservice de produção restrita em retornar a resposta para o evento de fechamento R-2099.
+
+4) #DC-2823 - A partir desta versão a comunicação com a SEFAZ será feita localmente pelo componente.
+
+5) #DC-2778 - Implementado tratamento para geração do ID´s de evento para orgão público.
+
+Correções:
+
+1) #24457 - Corrigido propriedade PinCode
+
 ==================================== LEIAME VS 3.1.11.126 ===============================================
 
 Novidades:
