@@ -54,10 +54,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tbRetorno = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tbXmlEnvio = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tbXmlRetorno = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbNrRecibo = new System.Windows.Forms.RadioButton();
@@ -85,6 +85,7 @@
             this.tbCNPJSH.Name = "tbCNPJSH";
             this.tbCNPJSH.Size = new System.Drawing.Size(216, 20);
             this.tbCNPJSH.TabIndex = 1;
+            this.tbCNPJSH.Text = "00000000000000";
             // 
             // label2
             // 
@@ -101,6 +102,7 @@
             this.tbTokenSH.Name = "tbTokenSH";
             this.tbTokenSH.Size = new System.Drawing.Size(293, 20);
             this.tbTokenSH.TabIndex = 3;
+            this.tbTokenSH.Text = "aB1CwzugCB3h37Hd2mas23";
             // 
             // btnConfigurar
             // 
@@ -201,6 +203,7 @@
             this.tbEmpregador.Name = "tbEmpregador";
             this.tbEmpregador.Size = new System.Drawing.Size(160, 20);
             this.tbEmpregador.TabIndex = 16;
+            this.tbEmpregador.Text = "00000000000000";
             // 
             // label5
             // 
@@ -256,6 +259,7 @@
             this.tbTemplates.Name = "tbTemplates";
             this.tbTemplates.Size = new System.Drawing.Size(519, 20);
             this.tbTemplates.TabIndex = 22;
+            this.tbTemplates.Text = "C:\\Program Files\\TecnoSpeed\\Reinf\\Arquivos\\Templates\\";
             // 
             // label8
             // 
@@ -272,6 +276,7 @@
             this.tbEsquemas.Name = "tbEsquemas";
             this.tbEsquemas.Size = new System.Drawing.Size(519, 20);
             this.tbEsquemas.TabIndex = 24;
+            this.tbEsquemas.Text = "C:\\Program Files\\TecnoSpeed\\Reinf\\Arquivos\\Esquemas\\";
             // 
             // label9
             // 
@@ -304,6 +309,15 @@
             this.tabPage1.Text = "Retorno";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // tbRetorno
+            // 
+            this.tbRetorno.Location = new System.Drawing.Point(4, 3);
+            this.tbRetorno.Multiline = true;
+            this.tbRetorno.Name = "tbRetorno";
+            this.tbRetorno.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbRetorno.Size = new System.Drawing.Size(519, 347);
+            this.tbRetorno.TabIndex = 8;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.tbXmlEnvio);
@@ -315,6 +329,15 @@
             this.tabPage2.Text = "Xml de Envio";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // tbXmlEnvio
+            // 
+            this.tbXmlEnvio.Location = new System.Drawing.Point(5, 5);
+            this.tbXmlEnvio.Multiline = true;
+            this.tbXmlEnvio.Name = "tbXmlEnvio";
+            this.tbXmlEnvio.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbXmlEnvio.Size = new System.Drawing.Size(519, 347);
+            this.tbXmlEnvio.TabIndex = 9;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.tbXmlRetorno);
@@ -325,24 +348,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Xml de Retorno";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tbRetorno
-            // 
-            this.tbRetorno.Location = new System.Drawing.Point(4, 3);
-            this.tbRetorno.Multiline = true;
-            this.tbRetorno.Name = "tbRetorno";
-            this.tbRetorno.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbRetorno.Size = new System.Drawing.Size(519, 347);
-            this.tbRetorno.TabIndex = 8;
-            // 
-            // tbXmlEnvio
-            // 
-            this.tbXmlEnvio.Location = new System.Drawing.Point(5, 5);
-            this.tbXmlEnvio.Multiline = true;
-            this.tbXmlEnvio.Name = "tbXmlEnvio";
-            this.tbXmlEnvio.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbXmlEnvio.Size = new System.Drawing.Size(519, 347);
-            this.tbXmlEnvio.TabIndex = 9;
             // 
             // tbXmlRetorno
             // 

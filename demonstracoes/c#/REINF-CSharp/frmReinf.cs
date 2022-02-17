@@ -19,42 +19,46 @@ namespace REINF_CSharp
             InitializeComponent();  
         }
 
+        public void CarregarConfiguracao()
+        {
+            reinf.ConfigurarSoftwareHouse(tbCNPJSH.Text, tbTokenSH.Text);  
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            CarregarConfiguracao();
             this.Text = "Reinf - TecnoSpeed - OCX " + reinf.Versao;
+            
             string[] vetor, vetor2;
-            tbEmpregador.Text = "08187168";
-            tbTemplates.Text = @"C:\Program Files\TecnoSpeed\Reinf\Arquivos\Templates\";
-            tbEsquemas.Text = @"C:\Program Files\TecnoSpeed\Reinf\Arquivos\Esquemas\";
-            tbCNPJSH.Text = "86837822000147";
-            tbTokenSH.Text = "Hmf3xiDgPP6nC90MO7Yy64NhEytKoOVA7AkELTZI";
             vetor = reinf.ListarCertificados("|").Split('|');
             vetor2 = reinf.ListarVersaoManual("|").Split('|');
+
             cbbCertificado.Items.Clear();
             for (int i = 0; i < vetor.Length; i++)
             {
                 cbbCertificado.Items.Add(vetor[i]);
             }
-            cbVersao.Items.Clear();
+                cbVersao.Items.Clear();
             for (int i = 0; i < vetor2.Length; i++)
             {
                 cbVersao.Items.Add(vetor2[i]);
             }
+
             cbbCertificado.SelectedIndex = 0;
-            cbVersao.SelectedIndex = 0;
+            cbVersao.SelectedIndex = 1;
             cbAmbiente.SelectedIndex = 1;
-            rbIdLote.Checked = true;
+            rbIdLote.Checked = true;   
         }
 
         private void btnConfigurarSH_Click(object sender, EventArgs e)
         {
-            tbRetorno.Clear();
-            reinf.ConfigurarSoftwareHouse(tbCNPJSH.Text, tbTokenSH.Text);
-            reinf.CpfCnpjEmpregador = tbEmpregador.Text;
-            reinf.VersaoManual = cbVersao.Text;
+            CarregarConfiguracao();
             reinf.DiretorioTemplates = tbTemplates.Text;
             reinf.DiretorioEsquemas = tbEsquemas.Text;
+            reinf.CpfCnpjEmpregador = tbEmpregador.Text;
             reinf.NomeCertificado = cbbCertificado.Text;
+            reinf.VersaoManual = cbVersao.Text;
+   
             if (cbAmbiente.Text == "1 - Produção")
             {
                 reinf.Ambiente = ReinfClientX.AmbienteKind.akProducao;
