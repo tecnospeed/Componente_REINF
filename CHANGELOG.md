@@ -1,4 +1,13 @@
-﻿## [4.1.14.184]
+﻿## [4.1.14.189]
+
+#Leiame
+
+**Novidades**
+* DSP4G-282 - obrigatoriedade da propriedade [CpfCnpjEmpregador](https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360005513253) nas requisições feitas a api
+* DSP4G-758 - Compatibilizado com atualizações do componente indy
+* DSP4G-812 - Propriedade [NotaTecnica](https://atendimento.tecnospeed.com.br/hc/pt-br/articles/360005513253) para permitir alternar entre NT's de uma mesma versão manual 
+
+## [4.1.14.184]
  ## Novidades:
 
 * DSP4G-400 - Adicionado ao pacote de instalação do componente o arquivo "IDs_LIBs_Reinf.ini" contendo os ID´s das OCXs.
@@ -46,3 +55,4 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
