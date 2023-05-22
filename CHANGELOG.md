@@ -1,4 +1,13 @@
-﻿## [4.1.14.190]
+﻿## [4.1.15.193]
+
+**Novidades**
+* DSP4G-1003: - Disponibilizado novo método [ConsultarLotesPorPeriodo ](https://tecnospeed.zendesk.com/knowledge/articles/13782658193815/pt-br?brand_id=360000386474)
+
+**Correção**
+
+* DSML-688 - Ajuste no Reinf_compile.fbp8, ao realizar build do componente, irá trazer a versão da ocx correta;
+
+## [4.1.14.190]
 
 
 **Novidades**
@@ -72,5 +81,6 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
