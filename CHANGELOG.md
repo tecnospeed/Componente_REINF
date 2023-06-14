@@ -1,4 +1,8 @@
-﻿## [4.1.15.193]
+﻿## [4.1.15.196]
+
+* Corre&ccedil;&otilde;es e melhorias diversos.
+
+## [4.1.15.193]
 
 **Novidades**
 * DSP4G-1003: - Disponibilizado novo método [ConsultarLotesPorPeriodo ](https://atendimento.tecnospeed.com.br/hc/pt-br/articles/13782658193815)
@@ -81,6 +85,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
