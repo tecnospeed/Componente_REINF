@@ -1,6 +1,4 @@
-﻿## [4.1.15.196]
 
-* Corre&ccedil;&otilde;es e melhorias diversos.
 
 ## [4.1.15.193]
 
