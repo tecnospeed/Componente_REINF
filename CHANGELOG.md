@@ -1,19 +1,5 @@
 ﻿## [4.1.16.197]
 
-**Novidades**
-
-* DSP4G-712: - Compatibilização do REINF para a versão 2.1, criação dos Registros reutilizáveis na nova versão.
-* DSP4G-716: - Compatibilização do REINF para a versão 2.1, criação do Registro R-4080 - Retenção no recebimento.
-* DSP4G-119: - Compatibilização do REINF para a versão 2.1, compatibilização do Registro R-1000 - Informações do contribuinte.
-* DSP4G-717: - Compatibilização do REINF para a versão 2.1, criação do Registro R-4099 - Fechamento/reabertura dos eventos da série R-4000.
-* DSP4G-722: - Compatibilização do REINF para a versão 2.1, criação do Registro R-9005 - Bases e tributos - retenções na fonte.
-* DSP4G-708: - Compatibilização do REINF para a versão 2.1, criação do Registro R-4040 - Pagamentos/créditos a beneficiários não identificados.
-* DSP4G-710: - Compatibilização do REINF para a versão 2.1, criação do Registro R-4010 - Pagamentos/créditos a beneficiário pessoa física.
-* DSP4G-709: - Compatibilização do REINF para a versão 2.1, criação do Registro R-4020 - Pagamentos/créditos a beneficiário pessoa jurídica.
-* DSP4G-718: - Compatibilização do REINF para a versão 2.1,remoção dos Registros R-5011 e R-5001 e criação dos Registros R-9011 - Consolidação de bases e tributos - Contrib. previdenciária e R-9001 - Bases e tributos - contribuição previdenciária.
-* DSP4G-919: - Compatibilização do REINF para a versão 2.1,criação das interfaces do Registro R-9015 na ReinfClientX.ocx.
-* DSP4G-886: - Compatibilização do REINF para a versão 2.1,criação das interfaces do Registro R-9005 na ReinfClientX.ocx.
-
 **Correções**
 
 * DSML-688 - VERSÃO INSTALADA DIFERE DA LISTADA NA PROPRIEDADE
