@@ -1,4 +1,8 @@
-﻿## [4.1.16.197]
+## [4.0.16.200 - BETA]
+
+* Compatibilizado versão 2.1.02 do Reinf, segue documentação https://atendimento.tecnospeed.com.br/hc/pt-br/articles/12156612241047-Dicion%C3%A1rio-de-dados-EFD-Reinf-2-1-02
+ 
+ ## [4.1.16.197]
 
 **Correções**
 
