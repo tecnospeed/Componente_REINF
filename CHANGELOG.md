@@ -1,3 +1,13 @@
+﻿## [4.1.17.202]
+
+**Novidades**
+
+- Compatibilizado versão 2.1.02 do Reinf, segue documentação https://atendimento.tecnospeed.com.br/hc/pt-br/articles/12156612241047-Dicion%C3%A1rio-de-dados-EFD-Reinf-2-1-02
+
+**Correções**
+
+- DSML-850 Corrigida falha que inviabilizava a compatibilidade da OCX com a linguagem VB6 
+
 ## [4.0.16.200 - BETA]
 
 * Compatibilizado versão 2.1.02 do Reinf, segue documentação https://atendimento.tecnospeed.com.br/hc/pt-br/articles/12156612241047-Dicion%C3%A1rio-de-dados-EFD-Reinf-2-1-02
@@ -95,6 +105,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
