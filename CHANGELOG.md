@@ -1,4 +1,10 @@
-﻿## [4.1.17.202]
+﻿## [4.1.18.204]
+
+**Correções**
+
+- DSML-869 - Correção do erro "Assinatura do evento inválida. Erro ao verificar a assinatura" com XML indentado, podendo ser possível o envio de arquivo XML já estando formatado;
+
+## [4.1.17.202]
 
 **Novidades**
 
@@ -105,6 +111,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
