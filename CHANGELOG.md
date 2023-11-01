@@ -1,4 +1,14 @@
-﻿## [4.1.18.204]
+﻿## [5.1.19.207]
+
+**Novidade**
+
+- DSP4G-1217- Implementado novo método [GerarXMLporJson](https://atendimento.tecnospeed.com.br/hc/pt-br/articles/18197652093335) para geração de XML a partir de JSON.
+
+**Correção**
+
+* DSML-739 - Correção da conversão da ocx para dll;
+
+## [4.1.18.204]
 
 **Correções**
 
@@ -111,6 +121,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
