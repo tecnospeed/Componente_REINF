@@ -1,4 +1,14 @@
-﻿## [5.1.19.207]
+﻿## [5.1.20.212]
+
+**Novidade**
+
+- DSP4G-1306 - Removida validação que verificava se o evento era o R2099 para método TspdReinfClientX.ReconsultarLoteEventos para versão 2.1.02.
+
+**Correções**
+
+* DSML-976 - Corrigido o componente para que o Numero do Recibo seja mostrado apenas em eventos autorizados e implementado campo para receber o Protocolo de Entrega do evento ou do lote.
+
+## [5.1.19.207]
 
 **Novidade**
 
@@ -121,6 +131,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
