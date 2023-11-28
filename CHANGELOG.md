@@ -1,4 +1,8 @@
-﻿## [5.1.20.212]
+﻿## [5.1.20.213]
+
+* Corre&ccedil;&otilde;es e melhorias diversos.
+
+## [5.1.20.212]
 
 **Novidade**
 
@@ -131,6 +135,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
