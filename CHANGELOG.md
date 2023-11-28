@@ -1,6 +1,8 @@
-﻿## [5.1.20.213]
+﻿## [5.1.20.213 - Hotfix]
 
-* Corre&ccedil;&otilde;es e melhorias diversos.
+**Correções**
+
+* DSML-979 - Corrigido o problema `Status de "Lote recebido com sucesso"` ao enviar, mesmo ocorrendo algum erro.
 
 ## [5.1.20.212]
 
