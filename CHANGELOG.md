@@ -1,4 +1,8 @@
-﻿## [5.1.20.213 - Hotfix]
+﻿## [5.1.20.214]
+
+* Corre&ccedil;&otilde;es e melhorias diversos.
+
+## [5.1.20.213 - Hotfix]
 
 **Correções**
 
@@ -137,6 +141,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
