@@ -1,6 +1,6 @@
-﻿## [5.1.20.214]
-
-* Corre&ccedil;&otilde;es e melhorias diversos.
+﻿## [5.1.20.214 - Hotfix]
+**Correções**
+* Componente -Reinf - R-1000 empregador tipo inscrição "CPF" com Erro no xml
 
 ## [5.1.20.213 - Hotfix]
 
