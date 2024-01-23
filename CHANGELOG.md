@@ -1,4 +1,14 @@
-﻿## [5.1.20.214 - Hotfix]
+﻿## [5.1.20.220]
+
+**Novidades**
+
+**DSP4G-1372** - novo método GerarTx2ParaJson.
+
+**Correções**
+
+**DSML-931** - Correção da mensagem de erro ao não encontrar um lote na consulta.
+
+## [5.1.20.214 - Hotfix]
 **Correções**
 * Componente -Reinf - R-1000 empregador tipo inscrição "CPF" com Erro no xml
 
@@ -141,6 +151,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
