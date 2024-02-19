@@ -1,4 +1,10 @@
-﻿## [5.1.20.220]
+﻿## [5.1.21.223]
+
+**Novidade**
+
+DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadConfig ](https://atendimento.tecnospeed.com.br/hc/pt-br/articles/21238599227927)e [SaveConfig](https://atendimento.tecnospeed.com.br/hc/pt-br/articles/21238544740119)
+
+## [5.1.20.220]
 
 **Novidades**
 
@@ -151,6 +157,7 @@
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
