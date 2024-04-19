@@ -1,2 +1,0 @@
-c:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF-CSharp.exe
-c:\DiscoE\ex comp\Reinf\REINF-CSharp\REINF-CSharp\obj\Debug\REINF-CSharp.pdb
