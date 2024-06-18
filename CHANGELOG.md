@@ -1,4 +1,11 @@
-﻿## [5.1.21.223]
+﻿## [5.1.23.229]
+
+**Novidades**
+
+- DSML-1020 - Compatibilizado com a nova versão do delphi 12 Athens
+- DSML-934 - Disponibilizado documentação para uso da rota de excluir um certificado digital. 
+
+## [5.1.21.223]
 
 **Novidade**
 
@@ -157,6 +164,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
