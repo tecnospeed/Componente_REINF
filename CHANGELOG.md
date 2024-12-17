@@ -1,4 +1,8 @@
-﻿## [5.1.23.229]
+﻿## [5.1.23.231]
+
+* Corre&ccedil;&otilde;es e melhorias diversos.
+
+## [5.1.23.229]
 
 **Novidades**
 
@@ -164,6 +168,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
