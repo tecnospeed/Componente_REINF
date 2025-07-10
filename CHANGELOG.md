@@ -1,4 +1,12 @@
-﻿## [5.1.23.231]
+﻿## [5.1.24.232]
+
+**Novidades**
+
+* CLM-3077 Atualizando o Componente e a API com a Nota técnica 02/2025
+
+* CLM-3109 Alterado limite de envio em lote de 100 para 50
+
+## [5.1.23.231]
 
 * Corre&ccedil;&otilde;es e melhorias diversos.
 
@@ -168,6 +176,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
