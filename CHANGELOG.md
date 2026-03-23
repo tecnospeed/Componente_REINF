@@ -1,4 +1,9 @@
-﻿## [5.1.24.233]
+﻿## [5.1.24.234]
+
+**Novidades**
+* [DSML-1980](https://tecnospeed.atlassian.net/browse/DSML-1980) - Compatibilizando o componente Reinf com o Delphi 13 Florence
+
+## [5.1.24.233]
 
 **Novidades**
 
@@ -184,6 +189,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
