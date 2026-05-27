@@ -1,4 +1,10 @@
-﻿## [5.1.24.234]
+﻿## [5.1.24.235]
+
+**Novidades**
+
+* [ODSML-28902](http://odoo.tecnospeed.local/odoo/project/40/tasks/28902) - Compatibilização do componente com a NT 02/2026
+
+## [5.1.24.234]
 
 **Novidades**
 * [DSML-1980](https://tecnospeed.atlassian.net/browse/DSML-1980) - Compatibilizando o componente Reinf com o Delphi 13 Florence
@@ -189,6 +195,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
