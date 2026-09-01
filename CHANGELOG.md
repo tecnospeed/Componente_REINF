@@ -1,4 +1,10 @@
-﻿## [5.1.24.235]
+﻿## [6.1.0.1]
+
+**Novidades**
+
+* [ODSML-29369](http://odoo.tecnospeed.local/odoo/project/40/tasks/29369) - Compatibilizando o componente Reinf com o CNPJ Alfanumerico
+
+## [5.1.24.235]
 
 **Novidades**
 
@@ -195,6 +201,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
