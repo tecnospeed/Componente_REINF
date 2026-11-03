@@ -1,4 +1,12 @@
-﻿## [6.1.0.1]
+﻿## [6.1.0.3]
+
+## Novembro/2026
+
+**Correções**
+
+- [ODSML-37144](http://odoo.tecnospeed.local/odoo/project/40/tasks/37144) — Adequada a identificação do contribuinte nos lotes da EFD-Reinf para evitar a rejeição MS0045 nos eventos que exigem a raiz do CNPJ, preservando a configuração do CNPJ completo no componente.
+
+## [6.1.0.1]
 
 **Novidades**
 
@@ -201,6 +209,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
