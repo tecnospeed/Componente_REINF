@@ -1,4 +1,14 @@
-﻿## [6.1.0.3]
+﻿## [6.1.0.5]
+
+## Reinf - 11/2026
+
+**Novidades**
+
+* [ODSML-36022](http://odoo.tecnospeed.local/odoo/project/40/tasks/36022) - Adequar a validação do ID dos eventos para permitir zeros à esquerda e à direita.
+
+
+
+## [6.1.0.3]
 
 ## Novembro/2026
 
@@ -209,6 +219,7 @@ DSP4G-1378 - disponibilizado métodos de configuração por arquivo .ini [LoadCo
  ## Correções: 
 * 24457 - Corrigido propriedade PinCode 
  
+
 
 
 
